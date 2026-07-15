@@ -1,0 +1,50 @@
+# Build output
+target/
+build/
+out/
+*.class
+
+# Maven Wrapper binary (the scripts and properties file stay tracked)
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Local configuration and secrets
+# application.yaml is intentionally tracked: it must contain placeholders only.
+.env
+.env.*
+!.env.example
+src/main/resources/application-local.yaml
+src/main/resources/application-local.yml
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/

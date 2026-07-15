@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>News Management</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+<div class="min-h-screen">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="bg-white border-b">
+
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+
+            <div>
+
+                <h1 class="text-2xl font-bold">
+                    News Dashboard
+                </h1>
+
+                <p class="text-gray-500 text-sm">
+                    Spring Boot CRUD Application
+                </p>
+
+            </div>
+
+            <button
+                    onclick="loadNews()"
+                    class="px-5 py-2 rounded-lg border hover:bg-gray-100">
+
+                Refresh
+
+            </button>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= CONTENT ================= -->
+
+    <main class="max-w-7xl mx-auto px-8 py-10">
+
+        <!-- Statistics -->
+
+        <section class="grid md:grid-cols-3 gap-6 mb-10">
+
+            <div class="bg-white rounded-xl border p-6">
+
+                <h3 class="text-gray-500">
+                    Total News
+                </h3>
+
+                <h1
+                        id="totalNews"
+                        class="text-4xl font-bold mt-3">
+
+                    0
+
+                </h1>
+
+            </div>
+
+            <div class="bg-white rounded-xl border p-6">
+
+                <h3 class="text-gray-500">
+                    Last Updated
+                </h3>
+
+                <p
+                        id="lastUpdated"
+                        class="mt-4 text-lg">
+
+                    --
+
+                </p>
+
+            </div>
+
+            <div class="bg-white rounded-xl border p-6">
+
+                <h3 class="text-gray-500">
+                    Status
+                </h3>
+
+                <span
+                        class="inline-flex mt-4 px-3 py-1 rounded-full bg-green-100 text-green-700">
+
+                    Running
+
+                </span>
+
+            </div>
+
+        </section>
+
+        <!-- ================= GRID ================= -->
+
+        <div class="grid lg:grid-cols-3 gap-8">
+
+            <!-- LEFT -->
+
+            <div class="lg:col-span-1">
+
+                <div class="bg-white rounded-xl border shadow-sm p-6 sticky top-6">
+
+                    <h2 class="text-xl font-semibold mb-6">
+
+                        Add / Update News
+
+                    </h2>
+
+                    <input
+                            id="newsId"
+                            type="hidden">
+
+                    <div class="space-y-5">
+
+                        <div>
+
+                            <label class="text-sm font-medium">
+
+                                Title
+
+                            </label>
+
+                            <input
+                                    id="title"
+                                    class="w-full mt-2 border rounded-lg p-3 focus:ring-2 focus:ring-black outline-none"
+                                    placeholder="Enter title">
+
+                        </div>
+
+                        <div>
+
+                            <label class="text-sm font-medium">
+
+                                Reported By
+
+                            </label>
+
+                            <input
+                                    id="reportedBy"
+                                    class="w-full mt-2 border rounded-lg p-3 focus:ring-2 focus:ring-black outline-none"
+                                    placeholder="Reporter">
+
+                        </div>
+
+                        <div>
+
+                            <label class="text-sm font-medium">
+
+                                Details
+
+                            </label>
+
+                            <textarea
+
+                                    id="details"
+
+                                    rows="6"
+
+                                    class="w-full mt-2 border rounded-lg p-3 resize-none focus:ring-2 focus:ring-black outline-none"
+
+                                    placeholder="News details">
+
+                            </textarea>
+
+                        </div>
+
+                        <div class="flex gap-3">
+
+                            <button
+                                    id="saveButton"
+                                    type="button"
+                                    onclick="saveNews()"
+                                    disabled
+                                    class="flex-1 bg-gray-300 text-gray-500 rounded-lg py-3 cursor-not-allowed transition">
+
+                                Save
+
+                            </button>
+                            <button
+                                    type="button"
+                                    onclick="clearForm()"
+                                    class="flex-1 border rounded-lg py-3 hover:bg-gray-100">
+
+                                Clear
+
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="lg:col-span-2">
+
+                <!-- Search -->
+
+                <div class="bg-white border rounded-xl p-5 mb-6">
+
+                    <input
+
+                            id="search"
+
+                            placeholder="Search news..."
+
+                            onkeyup="searchNews()"
+
+                            class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-black outline-none">
+
+                </div>
+
+                <!-- News List -->
+
+                <div
+
+                        id="newsContainer"
+
+                        class="space-y-5">
+
+                </div>
+
+                <!-- Empty State -->
+
+                <div
+
+                        id="emptyState"
+
+                        class="hidden bg-white border rounded-xl p-12 text-center">
+
+                    <h2 class="text-2xl font-semibold">
+
+                        No News Found
+
+                    </h2>
+
+                    <p class="text-gray-500 mt-3">
+
+                        Create your first news article.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

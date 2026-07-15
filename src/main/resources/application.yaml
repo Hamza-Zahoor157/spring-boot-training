@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: Lecture02
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+  security:
+    user:
+      name: ${APP_USERNAME:reporter}
+      password: ${APP_PASSWORD:reporter}
+      roles: REPORTER
+
+logging:
+  level:
+    sql: debug
+    web: debug
+    liquibase: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  tracing:
+    sampling:
+      probability: 1.0
+
+  opentelemetry:
+    tracing:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/traces
+
+  # The local receiver accepts traces, but not OTLP metrics at /v1/metrics.
+  # Metrics remain available through the configured Prometheus registry.
+  otlp:
+    metrics:
+      export:
+        enabled: false
