@@ -40,3 +40,7 @@ management:
     metrics:
       export:
         enabled: false
+
+app:
+  message:
+    welcome: Welcome to RedMath
