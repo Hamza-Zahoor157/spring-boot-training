@@ -57,6 +57,7 @@ public class NewsController {
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('EDITOR', 'REPORTER')")
     public News createNews(
+//            @RequestHeader("X-XSRF-TOKEN") String csrfToken,
             @RequestBody News news) {
 
         return service.createNews(news);
@@ -68,6 +69,7 @@ public class NewsController {
     public ResponseEntity<News> updateNews(
             @Positive
             @PathVariable Long newsId,
+//            @RequestHeader("X-XSRF-TOKEN") String csrfToken,
             @RequestBody News news) {
 
         News updatedNews = service.updateNews(newsId, news);
