@@ -7,3 +7,11 @@ databaseChangeLog:
   - include:
       file: db.changelog-news-dml.yaml
       relativeToChangelogFile: true
+
+  - include:
+      file: db.changelog-api-user-ddl.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: db.changelog-api-user-dml.yaml
+      relativeToChangelogFile: true
