@@ -5,8 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.security.core.AuthenticationException;
+
 import java.time.OffsetDateTime;
 
 @RestControllerAdvice
@@ -47,9 +49,9 @@ public class GlobalExceptionHandler {
                 request);
     }
 
-    @ExceptionHandler(AuthorizationDeniedException.class)
+    @ExceptionHandler({AccessDeniedException.class, AuthorizationDeniedException.class})
     public ResponseEntity<ApiError> handleAuthorizationDenied(
-            AuthorizationDeniedException exception,
+            RuntimeException exception,
             HttpServletRequest request) {
 
         return buildErrorResponse(
@@ -71,7 +73,6 @@ public class GlobalExceptionHandler {
                         request.getRequestURI())
         );
     }
-
 
     public record ApiError(
             OffsetDateTime timestamp,

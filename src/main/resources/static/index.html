@@ -52,6 +52,51 @@
 
     <main class="max-w-7xl mx-auto px-8 py-10">
 
+        <section class="bg-white rounded-xl border shadow-sm p-6 mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+
+            <div>
+
+                <p class="text-sm uppercase tracking-wide text-gray-500">
+                    Authentication
+                </p>
+
+                <h2 class="text-xl font-semibold mt-1">
+                    Login to get an opaque token
+                </h2>
+
+                <p class="text-sm text-gray-500 mt-2">
+                    The access token is stored in your browser and sent as a Bearer token for POST, PUT, and DELETE requests.
+                </p>
+
+            </div>
+
+            <div class="flex flex-col gap-3 w-full lg:w-auto lg:flex-row lg:items-center">
+
+                <input id="username" class="w-full lg:w-48 border rounded-lg p-3" placeholder="Username">
+
+                <input id="password" type="password" class="w-full lg:w-48 border rounded-lg p-3" placeholder="Password">
+
+                <button type="button" onclick="login()" class="px-5 py-3 rounded-lg bg-black text-white hover:bg-gray-900">
+                    Login
+                </button>
+
+                <a href="/oauth2/authorization/google"
+                   class="px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-center">
+                    Sign in with Google
+                </a>
+
+                <button type="button" onclick="logout()" class="px-5 py-3 rounded-lg border hover:bg-gray-100">
+                    Logout
+                </button>
+
+                <span id="authStatus" class="text-sm text-gray-500 lg:ml-2">
+                    Not authenticated
+                </span>
+
+            </div>
+
+        </section>
+
         <!-- Statistics -->
 
         <section class="grid md:grid-cols-3 gap-6 mb-10">

@@ -16,11 +16,46 @@ databaseChangeLog:
                   name: roles
                   value: ROLE_REPORTER
               - column:
+                  name: token
+                  value: reporter-token
+              - column:
                   name: created_at
                   valueDate: "2026-07-16T00:00:00"
               - column:
                   name: updated_at
                   valueDate: "2026-07-16T00:00:00"
+
+  - changeSet:
+      id: insert-google-user
+      author: hamza
+      preConditions:
+        - onFail: MARK_RAN
+          onError: HALT
+          sqlCheck:
+            expectedResult: "0"
+            sql: "select count(*) from api_users where user_name = 'hamzazahoor1067@gmail.com'"
+      changes:
+        - insert:
+            tableName: api_users
+            columns:
+              - column:
+                  name: user_name
+                  value: hamzazahoor1067@gmail.com
+              - column:
+                  name: password
+                  value: "{bcrypt}$2a$12$nIR/pJMq/YYCdniIb.TZCOaT1nDGY3hbPO7ghdIY8tdHJrV8.j48e"
+              - column:
+                  name: roles
+                  value: ROLE_REPORTER
+              - column:
+                  name: token
+                  value: 7r6oM1lijUe2U6iawTrS11fkMgtFcL6iV6R0Reafs5DdDEeByc5D96DvcqpEivV7
+              - column:
+                  name: created_at
+                  valueDate: "2026-07-17T00:00:00"
+              - column:
+                  name: updated_at
+                  valueDate: "2026-07-17T00:00:00"
 
         - insert:
             tableName: api_users
@@ -34,6 +69,9 @@ databaseChangeLog:
               - column:
                   name: roles
                   value: ROLE_EDITOR
+              - column:
+                  name: token
+                  value: editor-token
               - column:
                   name: created_at
                   valueDate: "2026-07-16T00:00:00"
@@ -53,6 +91,9 @@ databaseChangeLog:
               - column:
                   name: roles
                   value: ROLE_ADMIN
+              - column:
+                  name: token
+                  value: admin-token
               - column:
                   name: created_at
                   valueDate: "2026-07-16T00:00:00"

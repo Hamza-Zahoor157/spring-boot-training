@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -57,10 +58,10 @@ public class NewsController {
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('EDITOR', 'REPORTER')")
     public News createNews(
-//            @RequestHeader("X-XSRF-TOKEN") String csrfToken,
+            Authentication authentication,
             @RequestBody News news) {
 
-        return service.createNews(news);
+        return service.createNews(news, authentication);
 
     }
 
@@ -69,16 +70,16 @@ public class NewsController {
     public ResponseEntity<News> updateNews(
             @Positive
             @PathVariable Long newsId,
-//            @RequestHeader("X-XSRF-TOKEN") String csrfToken,
+            Authentication authentication,
             @RequestBody News news) {
 
-        News updatedNews = service.updateNews(newsId, news);
+        News updatedNews = service.updateNews(newsId, news, authentication);
 
         return ResponseEntity.ok(updatedNews);
     }
 
     @DeleteMapping("/{newsId}")
-    @PreAuthorize("hasAnyRole('EDITOR', 'ADMIN')")
+    @PreAuthorize("hasRole('EDITOR')")
     public ResponseEntity<Void> deleteNews(
             @PathVariable Long newsId) {
 

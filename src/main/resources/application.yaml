@@ -2,15 +2,23 @@ spring:
   application:
     name: Lecture02
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - openid
+              - profile
+              - email
+            redirect-uri: ${GOOGLE_REDIRECT_URI:http://localhost:8080/login/oauth2/code/google}
+
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: none
-  security:
-    user:
-      name: ${APP_USERNAME:reporter}
-      password: ${APP_PASSWORD:reporter}
-      roles: REPORTER
 
 logging:
   level:
