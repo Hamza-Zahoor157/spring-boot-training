@@ -5,7 +5,13 @@ spring:
   security:
     oauth2:
       client:
+#        provider:
+#          github:
+#            user-name-attribute:login
         registration:
+          github:
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
           google:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
@@ -52,3 +58,6 @@ management:
 app:
   message:
     welcome: Welcome to RedMath
+  security:
+    jwt:
+      secret: ${JWT_SECRET:lecture02-demo-secret-key-0123456789}

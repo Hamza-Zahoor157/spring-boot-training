@@ -16,9 +16,6 @@ databaseChangeLog:
                   name: roles
                   value: ROLE_REPORTER
               - column:
-                  name: token
-                  value: reporter-token
-              - column:
                   name: created_at
                   valueDate: "2026-07-16T00:00:00"
               - column:
@@ -43,13 +40,10 @@ databaseChangeLog:
                   value: hamzazahoor1067@gmail.com
               - column:
                   name: password
-                  value: "{bcrypt}$2a$12$nIR/pJMq/YYCdniIb.TZCOaT1nDGY3hbPO7ghdIY8tdHJrV8.j48e"
+                  value: "{bcrypt}$2a$10$2gJIYkfQgbhmsROAlCef7etGEZ3bRJIK8fK3WHplxpB7Iwujh5gTO"
               - column:
                   name: roles
-                  value: ROLE_REPORTER
-              - column:
-                  name: token
-                  value: 7r6oM1lijUe2U6iawTrS11fkMgtFcL6iV6R0Reafs5DdDEeByc5D96DvcqpEivV7
+                  value: ROLE_EDITOR
               - column:
                   name: created_at
                   valueDate: "2026-07-17T00:00:00"
@@ -70,9 +64,6 @@ databaseChangeLog:
                   name: roles
                   value: ROLE_EDITOR
               - column:
-                  name: token
-                  value: editor-token
-              - column:
                   name: created_at
                   valueDate: "2026-07-16T00:00:00"
               - column:
@@ -92,11 +83,12 @@ databaseChangeLog:
                   name: roles
                   value: ROLE_ADMIN
               - column:
-                  name: token
-                  value: admin-token
-              - column:
                   name: created_at
                   valueDate: "2026-07-16T00:00:00"
               - column:
                   name: updated_at
                   valueDate: "2026-07-16T00:00:00"
+
+# reporter -> {bcrypt}$2a$12$nIR/pJMq/YYCdniIb.TZCOaT1nDGY3hbPO7ghdIY8tdHJrV8.j48e
+# editor -> {bcrypt}$2a$10$2gJIYkfQgbhmsROAlCef7etGEZ3bRJIK8fK3WHplxpB7Iwujh5gTO
+# password -> {bcrypt}$2a$10$IgpOu/SNahn.eoSFKmUYGO4C.4TBsPRyZWXeqwGG8zOT7luEJYNZK

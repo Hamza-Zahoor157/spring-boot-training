@@ -1,46 +1,61 @@
 package com.redmath.Lecture02.config;
 
-import com.redmath.Lecture02.user.ApiUser;
-import com.redmath.Lecture02.user.ApiUserService;
-import jakarta.servlet.http.HttpServletResponse;
-import java.net.URLEncoder;
+import com.redmath.Lecture02.security.OAuthAuthenticationSuccessHandler;
 import java.nio.charset.StandardCharsets;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.security.oauth2.server.resource.introspection.OAuth2IntrospectionAuthenticatedPrincipal;
-import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
+import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import com.nimbusds.jose.jwk.source.ImmutableSecret;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import java.util.Map;
 
 @Configuration
 @EnableMethodSecurity
 public class ApiSecurityConfiguration {
 
     @Bean
-        public OpaqueTokenIntrospector opaqueTokenIntrospector(ApiUserService userService) {
-                return token -> {
-                        ApiUser user = userService.findByToken(token);
+    public JwtEncoder jwtEncoder(@Value("${app.security.jwt.secret}") String secret) {
+        SecretKey secretKey = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
+        return new NimbusJwtEncoder(new ImmutableSecret<>(secretKey));
+    }
 
-                        return new OAuth2IntrospectionAuthenticatedPrincipal(
-                                        user.getUserName(),
-                                        Map.of("sub", user.getUserName()),
-                                        AuthorityUtils.commaSeparatedStringToAuthorityList(user.getRoles()));
-                };
+    @Bean
+    public JwtDecoder jwtDecoder(@Value("${app.security.jwt.secret}") String secret) {
+        SecretKey secretKey = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
+        return NimbusJwtDecoder.withSecretKey(secretKey)
+                .macAlgorithm(MacAlgorithm.HS256)
+                .build();
+    }
+
+    @Bean
+    public JwtAuthenticationConverter jwtAuthenticationConverter() {
+        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+        converter.setJwtGrantedAuthoritiesConverter(jwt -> {
+            String roles = jwt.getClaimAsString("roles");
+            return AuthorityUtils.commaSeparatedStringToAuthorityList(roles == null ? "" : roles);
+        });
+        return converter;
     }
 
     @Bean
     public SecurityFilterChain filterChain(
             HttpSecurity http,
-            ApiUserService userService,
-            OpaqueTokenIntrospector opaqueTokenIntrospector) throws Exception {
+            JwtAuthenticationConverter jwtAuthenticationConverter, OAuthAuthenticationSuccessHandler oAuthAuthenticationSuccessHandler) throws Exception {
 
         return http
+            .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/swagger-ui/**",
@@ -55,31 +70,26 @@ public class ApiSecurityConfiguration {
                         .anyRequest()
                         .authenticated())
                 // .formLogin(...) is not needed when using Google OAuth login.
-                .oauth2Login(config -> config.successHandler((request, response, authentication) -> {
-                    String username = authentication.getName();
-                    if (authentication instanceof OAuth2AuthenticationToken oauth2Authentication) {
-                        Object email = oauth2Authentication.getPrincipal().getAttributes().get("email");
-                        if (email instanceof String emailValue && !emailValue.isBlank()) {
-                            username = emailValue;
-                        }
-                    }
-
-                    try {
-                        ApiUser user = userService.generateToken(username);
-                        response.sendRedirect("/?token=" + user.getToken());
-                    } catch (UsernameNotFoundException ex) {
-                        response.sendRedirect("/?error=no_local_user&username=" + URLEncoder.encode(username, StandardCharsets.UTF_8));
-                    }
-                }))
+                .oauth2Login(oauth ->
+                        oauth.successHandler(oAuthAuthenticationSuccessHandler))
+//                successHandler((request, response, authentication) -> {
+//                    String username = authentication.getName();
+//                    if (authentication instanceof OAuth2AuthenticationToken oauth2Authentication) {
+//                        Object email = oauth2Authentication.getPrincipal().getAttributes().get("email");
+//                        if (email instanceof String emailValue && !emailValue.isBlank()) {
+//                            username = emailValue;
+//                        }
+//                    }
+//
+//                    try {
+//                        String token = userService.generateToken(username);
+//                        response.sendRedirect("/?token=" + URLEncoder.encode(token, StandardCharsets.UTF_8));
+//                    } catch (UsernameNotFoundException ex) {
+//                        response.sendRedirect("/?error=no_local_user&username=" + URLEncoder.encode(username, StandardCharsets.UTF_8));
+//                    }
+//                }))
                 .oauth2ResourceServer(oauth2 -> oauth2
-                        .opaqueToken(opaqueToken -> opaqueToken
-                                .introspector(opaqueTokenIntrospector)))
-//                .csrf(csrf -> csrf
-//                        .ignoringRequestMatchers("/api/**"))
-                // .securityContext(...) and .sessionManagement(STATELESS) commented out:
-                // oauth2Login requires session during OAuth2 authorization flow.
-                // .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class) commented out:
-                // this cookie helper was only needed for the custom form login flow.
+                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter)))
                 .build();
     }
 }

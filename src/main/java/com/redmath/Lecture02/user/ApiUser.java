@@ -33,7 +33,6 @@ public class ApiUser {
 
     private String password;
     private String roles;
-    private String token;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

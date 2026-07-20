@@ -6,10 +6,10 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.OAuth2Error;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -17,7 +17,7 @@ public class ApiUserService implements UserDetailsService {
 
     private final ApiUserRepository repository;
 
-    public ApiUserService(ApiUserRepository repository) {
+    public ApiUserService(ApiUserRepository repository, JwtEncoder jwtEncoder) {
         this.repository = repository;
     }
 
@@ -33,18 +33,25 @@ public class ApiUserService implements UserDetailsService {
                 .build();
     }
 
-    public ApiUser generateToken(String username) {
-        ApiUser apiUser = repository.findByUserName(username)
-                .orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
+    public ApiUser getOrCreateUser(String username) {
 
-        apiUser.setToken(UUID.randomUUID().toString());
-        return repository.save(apiUser);
-    }
+        return repository.findByUserName(username)
+                .orElseGet(() -> {
+                    ApiUser user = new ApiUser();
 
-    public ApiUser findByToken(String token) {
-        return repository.findByToken(token)
-                .orElseThrow(() -> new OAuth2AuthenticationException(
-                        new OAuth2Error("invalid_token"),
-                        "invalid token"));
+                    user.setUserName(username);
+
+                    user.setPassword(UUID.randomUUID().toString());
+
+                    user.setRoles("ROLE_EDITOR");
+
+                    user.setCreatedAt(LocalDateTime.now());
+
+                    user.setUpdatedAt(LocalDateTime.now());
+
+                    return repository.save(user);
+                });
     }
 }
+
+

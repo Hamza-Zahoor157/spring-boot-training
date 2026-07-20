@@ -35,13 +35,6 @@ databaseChangeLog:
                     nullable: false
 
               - column:
-                  name: token
-                  type: VARCHAR(255)
-                  constraints:
-                    nullable: false
-                    unique: true
-
-              - column:
                   name: created_at
                   type: TIMESTAMP
                   constraints:

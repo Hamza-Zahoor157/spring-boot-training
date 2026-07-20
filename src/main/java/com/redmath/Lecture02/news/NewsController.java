@@ -1,7 +1,6 @@
 package com.redmath.Lecture02.news;
 
 import jakarta.annotation.security.PermitAll;
-import jakarta.validation.constraints.Positive;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -68,7 +67,6 @@ public class NewsController {
     @PutMapping("/{newsId}")
     @PreAuthorize("hasAnyRole('EDITOR', 'REPORTER')")
     public ResponseEntity<News> updateNews(
-            @Positive
             @PathVariable Long newsId,
             Authentication authentication,
             @RequestBody News news) {

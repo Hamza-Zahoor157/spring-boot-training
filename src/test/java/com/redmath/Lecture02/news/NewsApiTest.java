@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -14,9 +16,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Transactional
 class NewsApiTest {
 
     @Autowired
@@ -44,6 +48,8 @@ class NewsApiTest {
     void shouldCreateNews() throws Exception {
 
         mockMvc.perform(post("/api/v1/news")
+                        .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
+                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -63,6 +69,8 @@ class NewsApiTest {
     void shouldUpdateNews() throws Exception {
 
         mockMvc.perform(put("/api/v1/news/1")
+                        .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
+                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -80,7 +88,8 @@ class NewsApiTest {
     @Test
     void shouldDeleteNews() throws Exception {
 
-        mockMvc.perform(delete("/api/v1/news/2"))
+        mockMvc.perform(delete("/api/v1/news/2")
+                        .with(jwt().authorities(new SimpleGrantedAuthority("ROLE_EDITOR"))))
                 .andExpect(status().isNoContent());
 
         mockMvc.perform(get("/api/v1/news/2"))
@@ -98,6 +107,8 @@ class NewsApiTest {
         """;
 
         mockMvc.perform(put("/api/v1/news/9999")
+                        .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
+                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andExpect(status().isNotFound())
@@ -121,6 +132,8 @@ class NewsApiTest {
         """;
 
         mockMvc.perform(put("/api/v1/news/-1")
+                        .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
+                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andExpect(status().isBadRequest())
@@ -145,6 +158,8 @@ class NewsApiTest {
         """;
 
         mockMvc.perform(put("/api/v1/news/1")
+                        .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
+                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andExpect(status().isBadRequest())
@@ -166,6 +181,8 @@ class NewsApiTest {
     void shouldRejectEmptyTitle() throws Exception {
 
         mockMvc.perform(post("/api/v1/news")
+                        .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
+                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -179,9 +196,11 @@ class NewsApiTest {
     }
 
     @Test
-    void shouldRejectEmptyReportedBy() throws Exception {
+    void shouldUseAuthenticatedUserAsReportedBy() throws Exception {
 
         mockMvc.perform(post("/api/v1/news")
+                        .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
+                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
@@ -190,13 +209,16 @@ class NewsApiTest {
                                   "reportedBy":""
                                 }
                                 """))
-                        .andExpect(status().isBadRequest());
+                        .andExpect(status().isCreated())
+                        .andExpect(jsonPath("$.reportedBy").value("Hamza"));
     }
 
     @Test
     void shouldRejectEmptyDetails() throws Exception {
 
         mockMvc.perform(post("/api/v1/news")
+                        .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
+                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
