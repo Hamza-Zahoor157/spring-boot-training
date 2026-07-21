@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,9 +16,11 @@ import java.util.UUID;
 public class ApiUserService implements UserDetailsService {
 
     private final ApiUserRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
-    public ApiUserService(ApiUserRepository repository, JwtEncoder jwtEncoder) {
+    public ApiUserService(ApiUserRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -29,7 +31,7 @@ public class ApiUserService implements UserDetailsService {
 
         return User.withUsername(apiUser.getUserName())
                 .password(apiUser.getPassword())
-                .authorities(AuthorityUtils.commaSeparatedStringToAuthorityList(apiUser.getRoles()))
+                .authorities(AuthorityUtils.commaSeparatedStringToAuthorityList("SCOPE_" + apiUser.getRoles().toUpperCase().replace(",", ",SCOPE_")))
                 .build();
     }
 
@@ -41,9 +43,9 @@ public class ApiUserService implements UserDetailsService {
 
                     user.setUserName(username);
 
-                    user.setPassword(UUID.randomUUID().toString());
+                    user.setPassword(passwordEncoder.encode(UUID.randomUUID().toString()));
 
-                    user.setRoles("ROLE_EDITOR");
+                    user.setRoles("REPORTER");
 
                     user.setCreatedAt(LocalDateTime.now());
 

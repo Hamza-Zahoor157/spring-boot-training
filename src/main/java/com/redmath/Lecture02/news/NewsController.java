@@ -55,7 +55,7 @@ public class NewsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAnyRole('EDITOR', 'REPORTER')")
+        @PreAuthorize("hasAnyAuthority('SCOPE_EDITOR', 'SCOPE_REPORTER')")
     public News createNews(
             Authentication authentication,
             @RequestBody News news) {
@@ -65,7 +65,7 @@ public class NewsController {
     }
 
     @PutMapping("/{newsId}")
-    @PreAuthorize("hasAnyRole('EDITOR', 'REPORTER')")
+        @PreAuthorize("hasAnyAuthority('SCOPE_EDITOR', 'SCOPE_REPORTER')")
     public ResponseEntity<News> updateNews(
             @PathVariable Long newsId,
             Authentication authentication,
@@ -77,7 +77,7 @@ public class NewsController {
     }
 
     @DeleteMapping("/{newsId}")
-    @PreAuthorize("hasRole('EDITOR')")
+        @PreAuthorize("hasAuthority('SCOPE_EDITOR')")
     public ResponseEntity<Void> deleteNews(
             @PathVariable Long newsId) {
 

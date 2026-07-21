@@ -58,6 +58,3 @@ management:
 app:
   message:
     welcome: Welcome to RedMath
-  security:
-    jwt:
-      secret: ${JWT_SECRET:lecture02-demo-secret-key-0123456789}

@@ -21,12 +21,12 @@ public class OAuthAuthenticationSuccessHandler
 
     private final OAuthUserResolver resolver;
     private final ApiUserService userService;
-    private final JwtService jwtService;
+    private final ApiSecurityService jwtService;
 
     public OAuthAuthenticationSuccessHandler(
             OAuthUserResolver resolver,
             ApiUserService userService,
-            JwtService jwtService) {
+            ApiSecurityService jwtService) {
 
         this.resolver = resolver;
         this.userService = userService;

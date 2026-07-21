@@ -53,7 +53,7 @@ public class NewsService {
                 new NewsNotFoundException(newsId));
 
         boolean isEditor = authentication.getAuthorities().stream()
-                .anyMatch(authority -> authority.getAuthority().equals("ROLE_EDITOR"));
+                .anyMatch(authority -> authority.getAuthority().equals("SCOPE_EDITOR"));
         boolean isOwner = Objects.equals(existingNews.getReportedBy(), authentication.getName());
         if (!isEditor && !isOwner) {
             throw new AccessDeniedException("Reporters can only update their own news");

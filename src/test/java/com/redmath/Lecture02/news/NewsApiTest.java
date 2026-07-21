@@ -49,13 +49,12 @@ class NewsApiTest {
 
         mockMvc.perform(post("/api/v1/news")
                         .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
-                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
+                                .authorities(new SimpleGrantedAuthority("SCOPE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
                                   "title":"Testing",
-                                  "details":"Unit testing using MockMvc",
-                                  "reportedBy":"Hamza"
+                                  "details":"Unit testing using MockMvc"
                                 }
                                 """))
                 .andExpect(status().isCreated())
@@ -70,13 +69,12 @@ class NewsApiTest {
 
         mockMvc.perform(put("/api/v1/news/1")
                         .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
-                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
+                                .authorities(new SimpleGrantedAuthority("SCOPE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
                                   "title":"Updated Spring Boot Siuuuuu",
-                                  "details":"Updated Details",
-                                  "reportedBy":"Hamza"
+                                  "details":"Updated Details"
                                 }
                                 """))
                 .andExpect(status().isOk())
@@ -89,7 +87,7 @@ class NewsApiTest {
     void shouldDeleteNews() throws Exception {
 
         mockMvc.perform(delete("/api/v1/news/2")
-                        .with(jwt().authorities(new SimpleGrantedAuthority("ROLE_EDITOR"))))
+                        .with(jwt().authorities(new SimpleGrantedAuthority("SCOPE_EDITOR"))))
                 .andExpect(status().isNoContent());
 
         mockMvc.perform(get("/api/v1/news/2"))
@@ -101,14 +99,13 @@ class NewsApiTest {
         String request = """
         {
           "title": "Updated Title",
-          "details": "Updated Details",
-          "reportedBy": "Hamza"
+          "details": "Updated Details"
         }
         """;
 
         mockMvc.perform(put("/api/v1/news/9999")
                         .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
-                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
+                                .authorities(new SimpleGrantedAuthority("SCOPE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andExpect(status().isNotFound())
@@ -126,14 +123,13 @@ class NewsApiTest {
         String request = """
         {
           "title": "Updated Title",
-          "details": "Updated Details",
-          "reportedBy": "Hamza"
+          "details": "Updated Details"
         }
         """;
 
         mockMvc.perform(put("/api/v1/news/-1")
                         .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
-                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
+                                .authorities(new SimpleGrantedAuthority("SCOPE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andExpect(status().isBadRequest())
@@ -152,14 +148,13 @@ class NewsApiTest {
         String request = """
         {
           "title": "",
-          "details": "",
-          "reportedBy": ""
+          "details": ""
         }
         """;
 
         mockMvc.perform(put("/api/v1/news/1")
                         .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
-                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
+                                .authorities(new SimpleGrantedAuthority("SCOPE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andExpect(status().isBadRequest())
@@ -182,13 +177,12 @@ class NewsApiTest {
 
         mockMvc.perform(post("/api/v1/news")
                         .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
-                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
+                                .authorities(new SimpleGrantedAuthority("SCOPE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
                                   "title":"",
-                                  "details":"Some Details",
-                                  "reportedBy":"Hamza"
+                                  "details":"Some Details"
                                 }
                                 """))
                 .andDo(print())
@@ -200,13 +194,12 @@ class NewsApiTest {
 
         mockMvc.perform(post("/api/v1/news")
                         .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
-                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
+                                .authorities(new SimpleGrantedAuthority("SCOPE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
                                   "title":"News",
-                                  "details":"Some Details",
-                                  "reportedBy":""
+                                  "details":"Some Details"
                                 }
                                 """))
                         .andExpect(status().isCreated())
@@ -218,16 +211,15 @@ class NewsApiTest {
 
         mockMvc.perform(post("/api/v1/news")
                         .with(jwt().jwt(jwt -> jwt.subject("Hamza"))
-                                .authorities(new SimpleGrantedAuthority("ROLE_REPORTER")))
+                                .authorities(new SimpleGrantedAuthority("SCOPE_REPORTER")))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
                                   "title":"News",
-                                  "details":"",
-                                  "reportedBy":"Hamza"
+                                  "details":""
                                 }
                                 """))
-                        .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest());
                 
     }
 

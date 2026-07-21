@@ -14,7 +14,7 @@ databaseChangeLog:
                   value: "{bcrypt}$2a$12$nIR/pJMq/YYCdniIb.TZCOaT1nDGY3hbPO7ghdIY8tdHJrV8.j48e"
               - column:
                   name: roles
-                  value: ROLE_REPORTER
+                  value: REPORTER
               - column:
                   name: created_at
                   valueDate: "2026-07-16T00:00:00"
@@ -43,7 +43,7 @@ databaseChangeLog:
                   value: "{bcrypt}$2a$10$2gJIYkfQgbhmsROAlCef7etGEZ3bRJIK8fK3WHplxpB7Iwujh5gTO"
               - column:
                   name: roles
-                  value: ROLE_EDITOR
+                  value: EDITOR
               - column:
                   name: created_at
                   valueDate: "2026-07-17T00:00:00"
@@ -62,7 +62,7 @@ databaseChangeLog:
                   value: "{bcrypt}$2a$10$2gJIYkfQgbhmsROAlCef7etGEZ3bRJIK8fK3WHplxpB7Iwujh5gTO"
               - column:
                   name: roles
-                  value: ROLE_EDITOR
+                  value: EDITOR
               - column:
                   name: created_at
                   valueDate: "2026-07-16T00:00:00"
@@ -81,7 +81,7 @@ databaseChangeLog:
                   value: "{bcrypt}$2a$10$IgpOu/SNahn.eoSFKmUYGO4C.4TBsPRyZWXeqwGG8zOT7luEJYNZK"
               - column:
                   name: roles
-                  value: ROLE_ADMIN
+                  value: ADMIN
               - column:
                   name: created_at
                   valueDate: "2026-07-16T00:00:00"

@@ -53,7 +53,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadNews();
 
     document.getElementById("title").addEventListener("input", validateForm);
-    document.getElementById("reportedBy").addEventListener("input", validateForm);
     document.getElementById("details").addEventListener("input", validateForm);
 
     validateForm();
@@ -117,14 +116,12 @@ async function login() {
 
     const payload = await response.json();
     setAccessToken(payload.access_token);
-    document.getElementById("reportedBy").value = username;
     updateAuthStatus();
     await loadNews();
 }
 
 function logout() {
     setAccessToken(null);
-    document.getElementById("reportedBy").value = "";
     updateAuthStatus();
 }
 
@@ -147,11 +144,10 @@ async function loadNews() {
 
 function validateForm() {
     const title = document.getElementById("title").value.trim();
-    const reportedBy = document.getElementById("reportedBy").value.trim();
     const details = document.getElementById("details").value.trim();
 
     const button = document.getElementById("saveButton");
-    const valid = title.length > 0 && reportedBy.length > 0 && details.length > 0;
+    const valid = title.length > 0 && details.length > 0;
 
     button.disabled = !valid;
 
@@ -278,16 +274,10 @@ function searchNews() {
 
 async function saveNews() {
     const title = document.getElementById("title").value.trim();
-    const reportedBy = document.getElementById("reportedBy").value.trim();
     const details = document.getElementById("details").value.trim();
 
     if (!title) {
         alert("Title is required.");
-        return;
-    }
-
-    if (!reportedBy) {
-        alert("Reported By is required.");
         return;
     }
 
@@ -300,7 +290,6 @@ async function saveNews() {
 
     const news = {
         title,
-        reportedBy,
         details,
         reportedAt: new Date().toISOString()
     };
@@ -326,7 +315,6 @@ function editNews(id) {
 
     document.getElementById("newsId").value = news.newsId;
     document.getElementById("title").value = news.title;
-    document.getElementById("reportedBy").value = news.reportedBy;
     document.getElementById("details").value = news.details;
 
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -351,7 +339,6 @@ async function deleteNews(id) {
 function clearForm() {
     document.getElementById("newsId").value = "";
     document.getElementById("title").value = "";
-    document.getElementById("reportedBy").value = "";
     document.getElementById("details").value = "";
     validateForm();
 }
