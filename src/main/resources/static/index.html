@@ -3,14 +3,14 @@
 
 <head>
 
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+  <meta content="width=device-width, initial-scale=1"
+        name="viewport">
 
-    <title>News Management</title>
+  <title>News Management</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
@@ -18,288 +18,297 @@
 
 <div class="min-h-screen">
 
-    <!-- ================= NAVBAR ================= -->
+  <!-- ================= NAVBAR ================= -->
 
-    <nav class="bg-white border-b">
+  <nav class="bg-white border-b">
 
-        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
 
-            <div>
+      <div>
 
-                <h1 class="text-2xl font-bold">
-                    News Dashboard
-                </h1>
+        <h1 class="text-2xl font-bold">
+          News Dashboard
+        </h1>
 
-                <p class="text-gray-500 text-sm">
-                    Spring Boot CRUD Application
-                </p>
+        <p class="text-gray-500 text-sm">
+          Spring Boot CRUD Application
+        </p>
 
-            </div>
+      </div>
 
-            <button
-                    onclick="loadNews()"
-                    class="px-5 py-2 rounded-lg border hover:bg-gray-100">
+      <button
+          class="px-5 py-2 rounded-lg border hover:bg-gray-100"
+          onclick="loadNews()">
 
-                Refresh
+        Refresh
 
-            </button>
+      </button>
 
-        </div>
+    </div>
 
-    </nav>
+  </nav>
 
-    <!-- ================= CONTENT ================= -->
+  <!-- ================= CONTENT ================= -->
 
-    <main class="max-w-7xl mx-auto px-8 py-10">
+  <main class="max-w-7xl mx-auto px-8 py-10">
 
-        <section class="bg-white rounded-xl border shadow-sm p-6 mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+    <section
+        class="bg-white rounded-xl border shadow-sm p-6 mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
 
-            <div>
+      <div>
 
-                <p class="text-sm uppercase tracking-wide text-gray-500">
-                    Authentication
-                </p>
+        <p class="text-sm uppercase tracking-wide text-gray-500">
+          Authentication
+        </p>
 
-                <h2 class="text-xl font-semibold mt-1">
-                    Login to get a JWT
-                </h2>
+        <h2 class="text-xl font-semibold mt-1">
+          Login to get a JWT
+        </h2>
 
-                <p class="text-sm text-gray-500 mt-2">
-                    The access token is stored in your browser and sent as a Bearer token for POST, PUT, and DELETE requests.
-                </p>
+        <p class="text-sm text-gray-500 mt-2">
+          The access token is stored in your browser and sent as a Bearer token for POST,
+          PUT, and
+          DELETE requests.
+        </p>
 
-            </div>
+      </div>
 
-            <div class="flex flex-col gap-3 w-full lg:w-auto lg:flex-row lg:items-center">
+      <div class="flex flex-col gap-3 w-full lg:w-auto lg:flex-row lg:items-center">
 
-                <input id="username" class="w-full lg:w-48 border rounded-lg p-3" placeholder="Username">
+        <input class="w-full lg:w-48 border rounded-lg p-3" id="username"
+               placeholder="Username">
 
-                <input id="password" type="password" class="w-full lg:w-48 border rounded-lg p-3" placeholder="Password">
+        <input class="w-full lg:w-48 border rounded-lg p-3" id="password"
+               placeholder="Password"
+               type="password">
 
-                <button type="button" onclick="login()" class="px-5 py-3 rounded-lg bg-black text-white hover:bg-gray-900">
-                    Login
-                </button>
+        <button class="px-5 py-3 rounded-lg bg-black text-white hover:bg-gray-900"
+                onclick="login()"
+                type="button">
+          Login
+        </button>
 
-                <a href="/oauth2/authorization/google"
-                   class="px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-center">
-                    Sign in with Google
-                </a>
-                <a
-                        class="px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-center"
-                        href="/oauth2/authorization/github">
+        <a class="px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-center"
+           href="/oauth2/authorization/google">
+          Sign in with Google
+        </a>
+        <a
+            class="px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-center"
+            href="/oauth2/authorization/github">
 
-                    Sign in with GitHub
-                </a>
+          Sign in with GitHub
+        </a>
 
-                <button type="button" onclick="logout()" class="px-5 py-3 rounded-lg border hover:bg-gray-100">
-                    Logout
-                </button>
+        <button class="px-5 py-3 rounded-lg border hover:bg-gray-100" onclick="logout()"
+                type="button">
+          Logout
+        </button>
 
-                <span id="authStatus" class="text-sm text-gray-500 lg:ml-2">
+        <span class="text-sm text-gray-500 lg:ml-2" id="authStatus">
                     Not authenticated
                 </span>
 
-            </div>
+      </div>
 
-        </section>
+    </section>
 
-        <!-- Statistics -->
+    <!-- Statistics -->
 
-        <section class="grid md:grid-cols-3 gap-6 mb-10">
+    <section class="grid md:grid-cols-3 gap-6 mb-10">
 
-            <div class="bg-white rounded-xl border p-6">
+      <div class="bg-white rounded-xl border p-6">
 
-                <h3 class="text-gray-500">
-                    Total News
-                </h3>
+        <h3 class="text-gray-500">
+          Total News
+        </h3>
 
-                <h1
-                        id="totalNews"
-                        class="text-4xl font-bold mt-3">
+        <h1
+            class="text-4xl font-bold mt-3"
+            id="totalNews">
 
-                    0
+          0
 
-                </h1>
+        </h1>
 
-            </div>
+      </div>
 
-            <div class="bg-white rounded-xl border p-6">
+      <div class="bg-white rounded-xl border p-6">
 
-                <h3 class="text-gray-500">
-                    Last Updated
-                </h3>
+        <h3 class="text-gray-500">
+          Last Updated
+        </h3>
 
-                <p
-                        id="lastUpdated"
-                        class="mt-4 text-lg">
+        <p
+            class="mt-4 text-lg"
+            id="lastUpdated">
 
-                    --
+          --
 
-                </p>
+        </p>
 
-            </div>
+      </div>
 
-            <div class="bg-white rounded-xl border p-6">
+      <div class="bg-white rounded-xl border p-6">
 
-                <h3 class="text-gray-500">
-                    Status
-                </h3>
+        <h3 class="text-gray-500">
+          Status
+        </h3>
 
-                <span
-                        class="inline-flex mt-4 px-3 py-1 rounded-full bg-green-100 text-green-700">
+        <span
+            class="inline-flex mt-4 px-3 py-1 rounded-full bg-green-100 text-green-700">
 
                     Running
 
                 </span>
 
+      </div>
+
+    </section>
+
+    <!-- ================= GRID ================= -->
+
+    <div class="grid lg:grid-cols-3 gap-8">
+
+      <!-- LEFT -->
+
+      <div class="lg:col-span-1">
+
+        <div class="bg-white rounded-xl border shadow-sm p-6 sticky top-6">
+
+          <h2 class="text-xl font-semibold mb-6">
+
+            Add / Update News
+
+          </h2>
+
+          <input
+              id="newsId"
+              type="hidden">
+
+          <div class="space-y-5">
+
+            <div>
+
+              <label class="text-sm font-medium">
+
+                Title
+
+              </label>
+
+              <input
+                  class="w-full mt-2 border rounded-lg p-3 focus:ring-2 focus:ring-black outline-none"
+                  id="title"
+                  placeholder="Enter title">
+
             </div>
 
-        </section>
+            <div>
 
-        <!-- ================= GRID ================= -->
+              <label class="text-sm font-medium">
 
-        <div class="grid lg:grid-cols-3 gap-8">
+                Details
 
-            <!-- LEFT -->
+              </label>
 
-            <div class="lg:col-span-1">
+              <textarea
 
-                <div class="bg-white rounded-xl border shadow-sm p-6 sticky top-6">
+                  class="w-full mt-2 border rounded-lg p-3 resize-none focus:ring-2 focus:ring-black outline-none"
 
-                    <h2 class="text-xl font-semibold mb-6">
+                  id="details"
 
-                        Add / Update News
+                  placeholder="News details"
 
-                    </h2>
-
-                    <input
-                            id="newsId"
-                            type="hidden">
-
-                    <div class="space-y-5">
-
-                        <div>
-
-                            <label class="text-sm font-medium">
-
-                                Title
-
-                            </label>
-
-                            <input
-                                    id="title"
-                                    class="w-full mt-2 border rounded-lg p-3 focus:ring-2 focus:ring-black outline-none"
-                                    placeholder="Enter title">
-
-                        </div>
-
-                        <div>
-
-                            <label class="text-sm font-medium">
-
-                                Details
-
-                            </label>
-
-                            <textarea
-
-                                    id="details"
-
-                                    rows="6"
-
-                                    class="w-full mt-2 border rounded-lg p-3 resize-none focus:ring-2 focus:ring-black outline-none"
-
-                                    placeholder="News details">
+                  rows="6">
 
                             </textarea>
 
-                        </div>
-
-                        <div class="flex gap-3">
-
-                            <button
-                                    id="saveButton"
-                                    type="button"
-                                    onclick="saveNews()"
-                                    disabled
-                                    class="flex-1 bg-gray-300 text-gray-500 rounded-lg py-3 cursor-not-allowed transition">
-
-                                Save
-
-                            </button>
-                            <button
-                                    type="button"
-                                    onclick="clearForm()"
-                                    class="flex-1 border rounded-lg py-3 hover:bg-gray-100">
-
-                                Clear
-
-                            </button>
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
 
-            <!-- RIGHT -->
+            <div class="flex gap-3">
 
-            <div class="lg:col-span-2">
+              <button
+                  class="flex-1 bg-gray-300 text-gray-500 rounded-lg py-3 cursor-not-allowed transition"
+                  disabled
+                  id="saveButton"
+                  onclick="saveNews()"
+                  type="button">
 
-                <!-- Search -->
+                Save
 
-                <div class="bg-white border rounded-xl p-5 mb-6">
+              </button>
+              <button
+                  class="flex-1 border rounded-lg py-3 hover:bg-gray-100"
+                  onclick="clearForm()"
+                  type="button">
 
-                    <input
+                Clear
 
-                            id="search"
-
-                            placeholder="Search news..."
-
-                            onkeyup="searchNews()"
-
-                            class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-black outline-none">
-
-                </div>
-
-                <!-- News List -->
-
-                <div
-
-                        id="newsContainer"
-
-                        class="space-y-5">
-
-                </div>
-
-                <!-- Empty State -->
-
-                <div
-
-                        id="emptyState"
-
-                        class="hidden bg-white border rounded-xl p-12 text-center">
-
-                    <h2 class="text-2xl font-semibold">
-
-                        No News Found
-
-                    </h2>
-
-                    <p class="text-gray-500 mt-3">
-
-                        Create your first news article.
-
-                    </p>
-
-                </div>
-
+              </button>
             </div>
+
+          </div>
 
         </div>
 
-    </main>
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="lg:col-span-2">
+
+        <!-- Search -->
+
+        <div class="bg-white border rounded-xl p-5 mb-6">
+
+          <input
+
+              class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-black outline-none"
+
+              id="search"
+
+              onkeyup="searchNews()"
+
+              placeholder="Search news...">
+
+        </div>
+
+        <!-- News List -->
+
+        <div
+
+            class="space-y-5"
+
+            id="newsContainer">
+
+        </div>
+
+        <!-- Empty State -->
+
+        <div
+
+            class="hidden bg-white border rounded-xl p-12 text-center"
+
+            id="emptyState">
+
+          <h2 class="text-2xl font-semibold">
+
+            No News Found
+
+          </h2>
+
+          <p class="text-gray-500 mt-3">
+
+            Create your first news article.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
 
 </div>
 

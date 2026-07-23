@@ -5,9 +5,9 @@ spring:
   security:
     oauth2:
       client:
-#        provider:
-#          github:
-#            user-name-attribute:login
+        #        provider:
+        #          github:
+        #            user-name-attribute:login
         registration:
           github:
             client-id: ${GITHUB_CLIENT_ID}
