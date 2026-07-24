@@ -20,6 +20,12 @@ spring:
               - profile
               - email
             redirect-uri: ${GOOGLE_REDIRECT_URI:http://localhost:8080/login/oauth2/code/google}
+  ai:
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY}
+        chat:
+          model: ${GEMINI_MODEL:gemini-flash-latest}
 
   jpa:
     open-in-view: false
