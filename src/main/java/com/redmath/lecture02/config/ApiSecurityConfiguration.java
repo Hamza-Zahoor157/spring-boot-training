@@ -37,7 +37,9 @@ public class ApiSecurityConfiguration {
       FormLoginSuccessHandler formLoginSuccessHandler) throws Exception {
 
     return http
-        .csrf(csrf -> csrf.disable())
+        .csrf(csrf -> csrf
+            .ignoringRequestMatchers("/api/**")
+        )
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(
                 "/swagger-ui/**",

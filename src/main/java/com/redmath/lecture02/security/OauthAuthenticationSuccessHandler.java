@@ -57,12 +57,6 @@ public class OauthAuthenticationSuccessHandler
             jwt,
             StandardCharsets.UTF_8);
 
-    String html = "<!DOCTYPE html><html><head>"
-        + "<meta http-equiv=\"refresh\" content=\"0;url=" + redirectUrl + "\">"
-        + "</head><body></body></html>";
-
-    response.setContentType("text/html;charset=UTF-8");
-    response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-    response.getOutputStream().write(html.getBytes(StandardCharsets.UTF_8));
+    response.sendRedirect(redirectUrl);
   }
 }

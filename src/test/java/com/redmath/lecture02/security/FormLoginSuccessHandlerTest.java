@@ -3,7 +3,6 @@ package com.redmath.lecture02.security;
 import com.redmath.lecture02.user.ApiUser;
 import com.redmath.lecture02.user.ApiUserService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

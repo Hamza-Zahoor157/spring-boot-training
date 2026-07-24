@@ -2,7 +2,9 @@ package com.redmath.lecture02.user;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class ApiUserService implements UserDetailsService {
 
   private final ApiUserRepository repository;
@@ -20,6 +23,13 @@ public class ApiUserService implements UserDetailsService {
   public ApiUserService(ApiUserRepository repository, PasswordEncoder passwordEncoder) {
     this.repository = repository;
     this.passwordEncoder = passwordEncoder;
+  }
+  @Cacheable(value = "users", key = "#username")
+  public ApiUser getByUsername(String username) {
+
+    log.info("Reading from database...");
+
+    return repository.findByUserName(username).orElseThrow();
   }
 
   @Override
