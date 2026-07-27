@@ -1,0 +1,1569 @@
+====================================================================
+FINTECH COMPANY POLICY MANUAL
+Internal Confidential Document
+
+Version: 3.2
+Classification: Internal Use Only
+Department: Information Security, Compliance & Operations
+====================================================================
+
+TABLE OF CONTENTS
+
+1. Company Overview
+2. Vision and Mission
+3. Customer Onboarding Policy
+4. Customer Verification Process
+5. Know Your Customer (KYC)
+6. Customer Due Diligence (CDD)
+7. Enhanced Due Diligence (EDD)
+8. Anti-Money Laundering (AML)
+
+====================================================================
+1. COMPANY OVERVIEW
+====================================================================
+
+RedPay Financial Services is a fictional digital financial institution
+created for educational purposes. The company provides digital wallets,
+domestic money transfers, international remittance services, merchant
+payments, utility bill payments, QR code payments, virtual cards and
+financial APIs for third-party partners.
+
+The company operates under strict regulatory compliance requirements.
+Every employee is responsible for protecting customer information,
+maintaining financial integrity and ensuring that every transaction
+performed through the platform complies with applicable laws and
+internal policies.
+
+The organization follows a security-first architecture. Every software
+system is developed using secure software development lifecycle
+principles. Every deployment undergoes automated testing, static code
+analysis, dependency vulnerability scanning and security review before
+being released into production.
+
+The company stores customer information securely using encryption both
+during transmission and at rest. Personally identifiable information
+is only accessible to employees whose job responsibilities require such
+access.
+
+Every employee must complete mandatory security awareness training
+before receiving production system access. Annual refresher training
+is required to maintain compliance.
+
+Customer trust is considered the company's most valuable asset.
+Business decisions should always prioritize customer security,
+confidentiality and regulatory compliance over rapid feature delivery.
+
+====================================================================
+2. VISION AND MISSION
+====================================================================
+
+The vision of RedPay Financial Services is to provide secure,
+accessible and reliable digital financial services while maintaining
+the highest standards of regulatory compliance and customer trust.
+
+The mission of the company is to simplify digital financial services
+without compromising security or privacy.
+
+Every engineering decision should satisfy three primary principles.
+
+First, security should always be considered before convenience.
+
+Second, customer information must remain confidential throughout its
+entire lifecycle.
+
+Third, every financial transaction must be traceable through secure
+audit logs.
+
+Software engineers are encouraged to design systems that remain
+available during failures, recover quickly after incidents and support
+continuous improvement through monitoring and observability.
+
+Operational excellence is considered equally important as feature
+development.
+
+====================================================================
+3. CUSTOMER ONBOARDING POLICY
+====================================================================
+
+Every customer must complete the onboarding process before accessing
+financial services.
+
+Customer onboarding begins with account registration through the
+official mobile application or web portal.
+
+During registration the customer provides the following information.
+
+• Full legal name
+• National identity number
+• Mobile phone number
+• Email address
+• Residential address
+• Date of birth
+• Nationality
+
+Customers must create a strong password according to the company's
+password policy.
+
+The onboarding system automatically validates the email address using
+a verification link.
+
+The registered mobile number must be verified through a one-time
+password sent via SMS.
+
+Accounts remain in a restricted state until both the email address and
+mobile phone number have been verified successfully.
+
+The onboarding workflow records timestamps for every verification step.
+
+Every onboarding request receives a unique onboarding identifier which
+is retained for audit purposes.
+
+Customer onboarding information is encrypted before being stored in the
+database.
+
+Temporary onboarding data is automatically deleted after thirty days if
+registration is not completed.
+
+Incomplete onboarding sessions are periodically removed by automated
+maintenance jobs.
+
+Repeated failed onboarding attempts originating from the same device
+may trigger temporary rate limiting.
+
+The onboarding service continuously evaluates suspicious behaviour such
+as multiple registrations using identical identification numbers or
+device fingerprints.
+
+====================================================================
+4. CUSTOMER VERIFICATION PROCESS
+====================================================================
+
+Customer verification ensures that every individual using the platform
+is properly identified.
+
+Verification consists of several independent stages.
+
+Stage one verifies the customer's identity documents.
+
+Stage two verifies ownership of the registered mobile phone number.
+
+Stage three validates facial recognition using a live selfie.
+
+Stage four evaluates address verification documents.
+
+The following identification documents are accepted.
+
+• National Identity Card
+• Passport
+• Government-issued Residence Permit
+
+The following documents are not accepted.
+
+• Expired identity cards
+• Student cards
+• Employee cards
+• Temporary documents
+• Photocopies
+
+Identity documents are analyzed using automated document recognition
+technology.
+
+Optical character recognition extracts customer information from the
+submitted documents.
+
+Extracted information is compared with the registration information.
+
+If inconsistencies are detected, the application is placed into manual
+review.
+
+Manual verification officers examine unclear or suspicious documents.
+
+Customers receive status notifications whenever verification progresses
+to a new stage.
+
+Verification normally completes within forty-eight hours.
+
+High application volumes may increase processing time.
+
+Applications remaining in manual review longer than seventy-two hours
+must be escalated to the Compliance Operations Team.
+
+====================================================================
+5. KNOW YOUR CUSTOMER (KYC)
+====================================================================
+
+Know Your Customer procedures are mandatory for every customer before
+financial services become available.
+
+The objective of KYC is to establish customer identity, reduce fraud
+and satisfy regulatory obligations.
+
+Customers are required to submit accurate information.
+
+Providing false information constitutes a violation of company policy.
+
+Required KYC documentation includes:
+
+• Government-issued identification
+• Live facial photograph
+• Residential address verification
+• Mobile phone verification
+• Email verification
+
+Additional documentation may be requested depending upon customer risk
+classification.
+
+Corporate customers must additionally provide:
+
+• Business registration certificate
+• Tax registration information
+• Company ownership documents
+• List of beneficial owners
+• Board authorization documents
+
+KYC information must remain accurate throughout the customer lifecycle.
+
+Customers are responsible for notifying the company whenever personal
+information changes.
+
+Periodic KYC reviews are automatically scheduled every twenty-four
+months.
+
+Customers identified as high risk may require more frequent reviews.
+
+Failure to complete requested KYC updates may result in temporary
+account restrictions.
+
+Repeated failure to provide updated information may result in account
+closure.
+
+====================================================================
+6. CUSTOMER DUE DILIGENCE (CDD)
+====================================================================
+
+Customer Due Diligence is performed immediately after successful KYC
+verification.
+
+CDD evaluates customer behaviour, expected transaction volume and
+overall financial risk.
+
+Customer profiles are categorized into the following risk levels.
+
+• Low Risk
+• Medium Risk
+• High Risk
+
+Risk classification considers multiple factors including customer
+occupation, country of residence, expected monthly transaction volume,
+historical fraud indicators and regulatory watchlists.
+
+Every customer receives an internal risk score.
+
+Risk scores are continuously recalculated as new customer activity is
+observed.
+
+Changes in transaction behaviour may increase or decrease customer risk
+classification.
+
+Customers identified as low risk experience simplified monitoring.
+
+Customers identified as medium risk receive standard transaction
+monitoring.
+
+Customers identified as high risk undergo enhanced monitoring and
+additional compliance reviews.
+
+CDD results remain confidential and are accessible only to authorized
+employees.
+
+====================================================================
+7. ENHANCED DUE DILIGENCE (EDD)
+====================================================================
+
+Enhanced Due Diligence applies to customers presenting elevated
+financial or regulatory risk.
+
+EDD may be triggered by any of the following conditions.
+
+Large international transfers.
+
+Politically exposed persons.
+
+Sanction list matches.
+
+Unusual transaction behaviour.
+
+High-value corporate customers.
+
+Customers operating in high-risk industries.
+
+EDD requires additional documentation including proof of income,
+business ownership verification, source of funds documentation and
+additional identification records.
+
+Compliance officers may request supporting financial statements.
+
+Enhanced Due Diligence investigations are documented using secure case
+management software.
+
+Every decision taken during an EDD investigation must include written
+justification.
+
+EDD cases remain open until every requested document has been reviewed.
+
+Transactions associated with active EDD investigations may be delayed
+until compliance review is completed.
+
+====================================================================
+8. ANTI-MONEY LAUNDERING (AML)
+====================================================================
+
+The company maintains a comprehensive Anti-Money Laundering program to
+prevent misuse of financial services for criminal activity.
+
+Every financial transaction is evaluated using automated transaction
+monitoring systems.
+
+Transactions are assigned internal AML risk scores.
+
+Factors considered include transaction frequency, transaction amount,
+customer behaviour, geographic location, historical fraud indicators
+and beneficiary information.
+
+Large cash-equivalent transactions receive additional monitoring.
+
+Transactions involving sanctioned jurisdictions are automatically
+blocked.
+
+Repeated transactions just below reporting thresholds are treated as
+potential structuring attempts.
+
+AML monitoring systems continuously compare customer activity against
+historical behaviour patterns.
+
+Suspicious activity generates alerts for manual compliance review.
+
+Compliance analysts investigate every high-priority alert.
+
+Investigations include examination of historical customer activity,
+beneficiary information, device information and external regulatory
+watchlists.
+
+If suspicious behaviour is confirmed, the account may be temporarily
+restricted while the investigation continues.
+
+Compliance officers maintain complete audit records describing every
+investigation decision.
+
+Regulatory reporting requirements must be satisfied within legally
+mandated reporting periods.
+
+Employees must immediately report suspected money laundering activity
+to the Compliance Department.
+
+Failure to report suspicious activity may result in disciplinary action
+including termination of employment.
+
+====================================================================
+9. TRANSACTION MONITORING
+====================================================================
+
+Transaction monitoring is one of the company's primary fraud prevention
+and regulatory compliance mechanisms. Every financial transaction
+processed by the platform is evaluated before, during and after
+execution.
+
+Monitoring is performed using automated rule engines, statistical
+models and behavioural analysis systems. Every transaction contributes
+to the customer's behavioural profile.
+
+The monitoring platform evaluates multiple characteristics including:
+
+• Transaction amount
+• Transaction frequency
+• Time of day
+• Device fingerprint
+• IP address
+• Geographic location
+• Historical customer behaviour
+• Destination account
+• Merchant category
+• Previous fraud history
+
+Customers whose behaviour significantly deviates from their historical
+patterns may receive higher internal risk scores.
+
+Multiple small transactions occurring within a short period may
+indicate an attempt to bypass reporting thresholds.
+
+Transactions performed immediately after password changes, device
+changes or successful password recovery are considered higher risk.
+
+Repeated transfers to newly added beneficiaries are monitored more
+closely during the first thirty days.
+
+High-value transfers originating from unfamiliar devices require
+additional verification.
+
+Transactions initiated from anonymous proxy networks, VPN services or
+high-risk IP addresses receive additional scrutiny.
+
+Every monitoring rule generates an internal confidence score.
+
+The fraud detection platform combines multiple rule scores to calculate
+an overall transaction risk score.
+
+Transactions classified as low risk continue immediately.
+
+Medium-risk transactions may require One-Time Password verification.
+
+High-risk transactions may require manual compliance review before
+completion.
+
+Critical-risk transactions are automatically rejected.
+
+Monitoring rules are reviewed monthly by the Risk Management Team.
+
+Historical monitoring data is retained for audit purposes according to
+regulatory retention requirements.
+
+====================================================================
+10. RISK SCORING
+====================================================================
+
+The company maintains an internal customer risk scoring system to
+support fraud prevention, transaction monitoring and regulatory
+compliance.
+
+Every customer receives a continuously updated numerical risk score.
+
+Risk scores are generated using multiple independent signals rather
+than a single factor.
+
+Examples of scoring inputs include:
+
+Customer age of account.
+
+Average transaction size.
+
+Transaction velocity.
+
+Number of failed login attempts.
+
+Number of password reset requests.
+
+Device consistency.
+
+Country of residence.
+
+Customer verification status.
+
+Previous fraud investigations.
+
+Chargeback history.
+
+Dispute history.
+
+Regulatory watchlist matches.
+
+The scoring engine recalculates customer scores whenever significant
+customer activity occurs.
+
+Risk scores are categorized into the following levels.
+
+Score 0-25
+Very Low Risk
+
+Score 26-50
+Low Risk
+
+Score 51-70
+Medium Risk
+
+Score 71-90
+High Risk
+
+Score 91-100
+Critical Risk
+
+Risk scores influence transaction approval workflows but never replace
+human compliance decisions.
+
+Compliance officers may manually override automated classifications
+when sufficient supporting evidence exists.
+
+Every manual override must be documented together with the reviewing
+officer's justification.
+
+Risk models undergo quarterly validation by the Data Science and Risk
+Engineering teams.
+
+====================================================================
+11. PAYMENT PROCESSING POLICY
+====================================================================
+
+The payment processing platform is responsible for securely executing
+financial transactions between customers, merchants and financial
+institutions.
+
+Every payment request follows a standardized processing pipeline.
+
+Step 1
+Authenticate customer.
+
+Step 2
+Validate session.
+
+Step 3
+Validate account status.
+
+Step 4
+Verify available balance.
+
+Step 5
+Execute fraud screening.
+
+Step 6
+Execute AML checks.
+
+Step 7
+Reserve customer funds.
+
+Step 8
+Execute payment.
+
+Step 9
+Generate audit records.
+
+Step 10
+Notify customer.
+
+Every payment receives a globally unique payment identifier.
+
+Payment identifiers are immutable and remain associated with the
+transaction throughout its lifecycle.
+
+Duplicate payment requests are detected using idempotency keys.
+
+The payment gateway rejects duplicate payment identifiers.
+
+Every successful payment generates an immutable audit trail.
+
+Failed payments remain available for investigation but cannot be
+modified.
+
+Payment processing systems maintain high availability through redundant
+application servers and replicated databases.
+
+Payment processing services expose REST APIs secured using OAuth2 and
+JWT authentication.
+
+All communication between payment services is encrypted using TLS.
+
+====================================================================
+12. DOMESTIC MONEY TRANSFERS
+====================================================================
+
+Domestic transfers allow customers to transfer funds between supported
+financial institutions within the country.
+
+Transfers are available twenty-four hours per day subject to scheduled
+maintenance windows.
+
+The standard maximum amount permitted for a single domestic transfer is
+USD 10,000.
+
+Customers may perform a maximum of five domestic transfers per day.
+
+The cumulative daily transfer limit is USD 25,000.
+
+Transfers exceeding these limits require manual approval by the Risk
+Operations Team.
+
+Transfer requests exceeding customer account balances are rejected.
+
+Beneficiary accounts must exist within supported financial institutions.
+
+Recently added beneficiaries remain under enhanced monitoring for seven
+days.
+
+Transfers executed during fraud investigations may be delayed until
+manual review is completed.
+
+Customers receive push notifications immediately after successful
+transfers.
+
+Every completed transfer generates a digital receipt.
+
+Digital receipts remain available for seven years.
+
+====================================================================
+13. INTERNATIONAL TRANSFERS
+====================================================================
+
+International transfers involve additional regulatory requirements and
+therefore receive enhanced compliance review.
+
+Only customers who have successfully completed Enhanced Due Diligence
+are eligible for international transfers exceeding USD 10,000.
+
+Customers must provide:
+
+Purpose of transfer.
+
+Recipient full legal name.
+
+Recipient financial institution.
+
+Recipient country.
+
+Recipient address.
+
+Source of funds declaration.
+
+Destination countries are validated against international sanctions
+lists before transfer execution.
+
+Transfers involving sanctioned jurisdictions are automatically blocked.
+
+Currency conversion rates are calculated at execution time.
+
+Exchange rates remain valid for five minutes.
+
+Expired quotations require recalculation before payment execution.
+
+International transfers exceeding USD 50,000 require senior compliance
+approval.
+
+Repeated transfers to unfamiliar countries generate additional fraud
+alerts.
+
+Transfer confirmation notifications include reference numbers, exchange
+rates and expected settlement times.
+
+====================================================================
+14. DIGITAL WALLET MANAGEMENT
+====================================================================
+
+Every verified customer receives a secure digital wallet.
+
+Wallet balances are updated immediately after successful financial
+transactions.
+
+Wallet balances cannot become negative.
+
+Reserved funds remain unavailable until associated transactions are
+completed or cancelled.
+
+Wallet statements remain available through the customer portal.
+
+Wallet history includes:
+
+Transaction identifiers.
+
+Date and time.
+
+Balance before transaction.
+
+Balance after transaction.
+
+Transaction description.
+
+Merchant information where applicable.
+
+Wallet records are immutable.
+
+Corrections are performed using compensating transactions rather than
+editing historical records.
+
+Wallet balances are reconciled daily against settlement systems.
+
+Reconciliation discrepancies automatically generate operational alerts.
+
+====================================================================
+15. REFUND POLICY
+====================================================================
+
+Refund requests may only be submitted for eligible completed
+transactions.
+
+Customers must submit refund requests within thirty calendar days of
+the original payment.
+
+Refund eligibility depends upon merchant policies, transaction type and
+regulatory requirements.
+
+Approved refunds are credited to the original funding source whenever
+possible.
+
+Partial refunds are permitted.
+
+Multiple refunds for the same transaction may not exceed the original
+transaction amount.
+
+Refund requests undergo fraud screening before approval.
+
+Customers receive notifications whenever refund status changes.
+
+Refund processing times normally range between three and seven business
+days depending upon participating financial institutions.
+
+====================================================================
+16. CHARGEBACK POLICY
+====================================================================
+
+Customers may dispute eligible payment transactions by initiating a
+chargeback request.
+
+Chargeback requests require supporting documentation describing the
+reason for the dispute.
+
+Examples include:
+
+Unauthorized transaction.
+
+Duplicate payment.
+
+Merchant service not received.
+
+Incorrect transaction amount.
+
+Fraudulent activity.
+
+Chargeback investigations involve collaboration between customers,
+merchants, payment processors and compliance teams.
+
+Temporary transaction credits may be applied while investigations are
+in progress.
+
+False or fraudulent chargeback requests may result in customer account
+restrictions.
+
+Completed investigations generate final written decisions together with
+supporting evidence.
+
+Chargeback history contributes to customer fraud risk scoring.
+
+Merchants exhibiting unusually high chargeback rates undergo additional
+operational review and may be subject to enhanced monitoring.
+
+====================================================================
+17. AUTHENTICATION AND AUTHORIZATION
+====================================================================
+
+Authentication is the process of verifying the identity of a customer,
+employee or third-party application before granting access to company
+resources.
+
+Authorization determines which resources an authenticated identity is
+permitted to access.
+
+The company strictly separates authentication from authorization to
+ensure consistent access control across all software systems.
+
+Supported authentication methods include:
+
+• Username and password
+• One-Time Password (OTP)
+• Multi-Factor Authentication (MFA)
+• OAuth2
+• OpenID Connect
+• API Keys (Partner APIs only)
+• JWT Access Tokens
+
+Every authenticated session receives a unique session identifier.
+
+Session identifiers are cryptographically random and cannot be
+predicted.
+
+Access permissions are granted according to the principle of least
+privilege.
+
+Users receive only the minimum permissions required to perform their
+assigned responsibilities.
+
+Administrative privileges are never granted permanently unless approved
+through formal access management procedures.
+
+Authorization decisions are enforced at every application layer,
+including REST APIs, administrative portals and internal services.
+
+Authorization failures are logged for audit and security analysis.
+
+Repeated unauthorized access attempts automatically increase customer
+risk scores.
+
+====================================================================
+18. PASSWORD POLICY
+====================================================================
+
+Passwords remain one of the most important authentication mechanisms
+within the organization.
+
+Customers must create passwords satisfying the following minimum
+requirements.
+
+Minimum length:
+12 characters
+
+Must contain:
+
+• One uppercase letter
+• One lowercase letter
+• One numerical digit
+• One special character
+
+Passwords must not contain:
+
+Customer name
+
+Email address
+
+Date of birth
+
+Phone number
+
+Dictionary words
+
+Sequential keyboard patterns
+
+Previously leaked passwords
+
+Passwords expire every ninety days.
+
+Customers receive reminder notifications beginning fourteen days before
+password expiration.
+
+The previous five passwords cannot be reused.
+
+Passwords are never stored in plaintext.
+
+All passwords are securely hashed using BCrypt before storage.
+
+Password reset requests require successful identity verification.
+
+Password reset links expire after fifteen minutes.
+
+After five consecutive failed login attempts the customer account is
+locked for thirty minutes.
+
+Customers receive email and mobile notifications whenever passwords are
+changed successfully.
+
+====================================================================
+19. MULTI-FACTOR AUTHENTICATION
+====================================================================
+
+Multi-Factor Authentication provides additional protection beyond
+traditional passwords.
+
+MFA combines at least two independent authentication factors.
+
+Supported factors include:
+
+Something the customer knows
+(Password)
+
+Something the customer has
+(Mobile Device)
+
+Something the customer is
+(Biometric Authentication)
+
+Customers must enable MFA before performing high-value financial
+transactions.
+
+The following activities require mandatory MFA verification.
+
+International money transfers.
+
+Adding a new beneficiary.
+
+Changing account recovery information.
+
+Updating registered mobile numbers.
+
+Updating registered email addresses.
+
+Accessing administrative portals.
+
+MFA verification codes expire after five minutes.
+
+Verification codes may only be used once.
+
+Repeated invalid MFA submissions trigger temporary account lockout.
+
+Lost devices require completion of identity verification before MFA can
+be reset.
+
+====================================================================
+20. SESSION MANAGEMENT POLICY
+====================================================================
+
+Every authenticated user session is uniquely identified.
+
+Session identifiers are generated using cryptographically secure random
+number generators.
+
+Sessions expire automatically after fifteen minutes of inactivity.
+
+Absolute session lifetime is limited to eight hours regardless of user
+activity.
+
+Customers are automatically logged out after session expiration.
+
+Session cookies are configured using the following security attributes.
+
+Secure
+
+HttpOnly
+
+SameSite=Strict
+
+Session identifiers are rotated immediately after successful login.
+
+Session identifiers are also regenerated following password changes and
+privilege escalation.
+
+Multiple simultaneous sessions are permitted for customer accounts but
+may be restricted for administrative users.
+
+Administrative sessions are continuously monitored for suspicious
+activity.
+
+Sessions originating from different geographic regions within unusually
+short periods generate fraud alerts.
+
+Users may terminate active sessions through the account management
+portal.
+
+Terminated sessions become invalid immediately.
+
+====================================================================
+21. API SECURITY POLICY
+====================================================================
+
+All company APIs are designed according to secure-by-default
+principles.
+
+Every API endpoint requires authentication unless explicitly designated
+as publicly accessible.
+
+REST APIs use HTTPS exclusively.
+
+Unencrypted HTTP requests are automatically redirected or rejected.
+
+Partner APIs authenticate using OAuth2 access tokens.
+
+JWT access tokens are digitally signed before issuance.
+
+Token signatures are verified for every protected request.
+
+Expired tokens are rejected immediately.
+
+API rate limiting protects backend services from abuse.
+
+Rate limits vary according to customer type and API subscription level.
+
+Repeated rate-limit violations may result in temporary API suspension.
+
+Input validation is performed for every API request.
+
+Unexpected request parameters are rejected.
+
+Request payloads are validated before business logic execution.
+
+Sensitive information must never appear in URL query parameters.
+
+API responses must never expose internal implementation details.
+
+Detailed exception information is recorded internally while customers
+receive standardized error messages.
+
+====================================================================
+22. DATA ENCRYPTION POLICY
+====================================================================
+
+Customer information is protected using encryption during transmission
+and at rest.
+
+Transport Layer Security (TLS) is mandatory for every network
+connection involving customer information.
+
+Weak cryptographic protocols are prohibited.
+
+Sensitive database fields are encrypted before storage.
+
+Examples of encrypted information include:
+
+National Identity Numbers.
+
+Government Identification.
+
+Passport Numbers.
+
+Residential Addresses.
+
+Recovery Codes.
+
+Security Questions.
+
+API Credentials.
+
+Cryptographic keys are managed through centralized key management
+services.
+
+Access to encryption keys is restricted to authorized infrastructure
+components.
+
+Encryption keys are rotated periodically according to security
+standards.
+
+Compromised keys are immediately revoked and replaced.
+
+Backups containing sensitive information remain encrypted throughout
+their retention period.
+
+====================================================================
+23. DATA PRIVACY POLICY
+====================================================================
+
+The company recognizes customer privacy as a fundamental business
+requirement.
+
+Personally Identifiable Information (PII) must only be collected when
+required for legitimate business purposes.
+
+Employees must access customer information solely for authorized
+business activities.
+
+Customer information may not be shared with unauthorized individuals.
+
+Production customer data must never be copied into development
+environments.
+
+Testing environments use anonymized or synthetic datasets.
+
+Customers may request access to information stored about them.
+
+Customers may request correction of inaccurate personal information.
+
+Data retention periods comply with regulatory requirements.
+
+Expired customer information is securely deleted according to approved
+data destruction procedures.
+
+Every access to sensitive customer information generates immutable
+audit records.
+
+Privacy incidents must be reported immediately to the Information
+Security Team.
+
+====================================================================
+24. EMPLOYEE ACCESS CONTROL POLICY
+====================================================================
+
+Employee access to company systems follows role-based access control
+principles.
+
+Every employee receives a unique company identity.
+
+Shared accounts are prohibited.
+
+Access requests require approval from both the employee's manager and
+the Information Security Team.
+
+Temporary administrative privileges expire automatically after approved
+maintenance activities.
+
+Privileged accounts require mandatory Multi-Factor Authentication.
+
+Production database access is restricted to authorized operations
+personnel.
+
+Direct production database modifications are prohibited except during
+approved emergency maintenance.
+
+Administrative activities are continuously monitored and audited.
+
+Employees changing departments undergo immediate access reviews.
+
+Employee departures automatically trigger account deactivation.
+
+Inactive employee accounts are removed according to established
+identity lifecycle procedures.
+
+Quarterly access reviews ensure employees retain only the permissions
+required for current responsibilities.
+
+Violations of access control policy may result in disciplinary action,
+including termination of employment.
+====================================================================
+25. INCIDENT RESPONSE POLICY
+====================================================================
+
+The company maintains a formal Incident Response Program to ensure that
+security incidents are identified, contained, investigated and resolved
+in a timely and consistent manner.
+
+A security incident is defined as any event that threatens the
+confidentiality, integrity or availability of company systems,
+applications, customer information or financial services.
+
+Examples of security incidents include:
+
+• Unauthorized account access
+• Credential theft
+• Malware infection
+• Data leakage
+• Distributed Denial of Service (DDoS) attacks
+• Insider threats
+• API abuse
+• Ransomware attacks
+• Database compromise
+• Unauthorized privilege escalation
+
+Every employee is responsible for reporting suspected security
+incidents immediately.
+
+Incident reports may originate from customers, automated monitoring
+systems, employees, third-party security vendors or regulatory
+authorities.
+
+The Incident Response Team follows the following phases.
+
+Phase 1 - Identification
+
+Potential incidents are detected through monitoring systems, SIEM
+alerts, application logs, fraud detection engines or customer reports.
+
+Phase 2 - Validation
+
+Security analysts determine whether the reported activity represents a
+true security incident or a false positive.
+
+Phase 3 - Containment
+
+Affected systems may be isolated to prevent further damage.
+
+Compromised credentials are revoked immediately.
+
+Suspicious API keys are disabled.
+
+Customer sessions may be terminated.
+
+Phase 4 - Investigation
+
+Security analysts identify the root cause, affected systems, attack
+timeline and business impact.
+
+Digital evidence is preserved throughout the investigation.
+
+Phase 5 - Eradication
+
+Malicious software, unauthorized accounts and compromised credentials
+are removed.
+
+Security patches are applied.
+
+Configuration weaknesses are corrected.
+
+Phase 6 - Recovery
+
+Systems are restored gradually after verification.
+
+Recovery activities include application validation, database integrity
+checks and monitoring.
+
+Phase 7 - Lessons Learned
+
+Following every incident the organization conducts a post-incident
+review.
+
+Recommendations are documented.
+
+Security improvements are prioritized.
+
+Monitoring rules are updated where necessary.
+
+Incident reports remain confidential and are retained according to
+regulatory requirements.
+
+====================================================================
+26. DISASTER RECOVERY AND BUSINESS CONTINUITY
+====================================================================
+
+The company maintains disaster recovery plans to ensure financial
+services remain available following unexpected failures.
+
+Business continuity planning focuses on maintaining critical customer
+services even during significant operational disruptions.
+
+Potential disaster scenarios include:
+
+Natural disasters.
+
+Power failures.
+
+Cloud provider outages.
+
+Network failures.
+
+Cybersecurity incidents.
+
+Hardware failures.
+
+Human error.
+
+Critical software defects.
+
+Critical production systems operate across multiple availability zones.
+
+Database backups are created automatically.
+
+Incremental backups are performed every hour.
+
+Full backups are performed daily.
+
+Backup integrity is verified regularly through restoration testing.
+
+Recovery Point Objective (RPO) is defined as fifteen minutes.
+
+Recovery Time Objective (RTO) is defined as two hours.
+
+Disaster recovery exercises are conducted twice each year.
+
+Results are reviewed by executive management.
+
+Business continuity plans include communication procedures for
+customers, regulators and business partners.
+
+====================================================================
+27. AUDIT LOGGING POLICY
+====================================================================
+
+Every significant activity performed within company systems generates
+an audit record.
+
+Audit logs provide accountability, regulatory compliance and forensic
+investigation capabilities.
+
+The following activities are always logged.
+
+Successful login.
+
+Failed login.
+
+Password changes.
+
+Password reset requests.
+
+Email address changes.
+
+Phone number updates.
+
+Beneficiary creation.
+
+Money transfers.
+
+Refund requests.
+
+Chargeback requests.
+
+Administrative actions.
+
+Permission changes.
+
+Role assignments.
+
+API authentication failures.
+
+Audit logs include the following information whenever available.
+
+Timestamp.
+
+Unique request identifier.
+
+Customer identifier.
+
+Employee identifier.
+
+Session identifier.
+
+Device identifier.
+
+IP address.
+
+Operation performed.
+
+Application name.
+
+Result status.
+
+Audit records are immutable.
+
+Existing audit records cannot be modified or deleted.
+
+Only authorized audit administrators may access audit log storage.
+
+Audit logs are retained according to legal and regulatory requirements.
+
+====================================================================
+28. MONITORING AND OBSERVABILITY
+====================================================================
+
+The company continuously monitors production systems to maintain high
+availability, performance and reliability.
+
+Monitoring includes infrastructure, applications, databases,
+networking components and third-party integrations.
+
+The organization follows the three pillars of observability.
+
+Metrics.
+
+Logs.
+
+Distributed Traces.
+
+Infrastructure metrics include:
+
+CPU utilization.
+
+Memory usage.
+
+Disk utilization.
+
+Network throughput.
+
+Database connection pool usage.
+
+Application metrics include:
+
+HTTP request count.
+
+HTTP response time.
+
+Error rate.
+
+JVM heap usage.
+
+Garbage collection frequency.
+
+Thread pool utilization.
+
+Database query duration.
+
+Cache hit ratio.
+
+Application startup time.
+
+Structured logging is used throughout backend services.
+
+Every request receives a unique correlation identifier.
+
+Correlation identifiers allow engineers to trace requests across
+multiple microservices.
+
+Distributed tracing is implemented using OpenTelemetry.
+
+Metrics are exported to Prometheus.
+
+Dashboards are visualized using Grafana.
+
+Application health information is exposed using Spring Boot Actuator.
+
+Critical alerts automatically notify the Operations Team.
+
+====================================================================
+29. CUSTOMER SUPPORT POLICY
+====================================================================
+
+Customer Support provides assistance regarding account management,
+payments, technical issues and security concerns.
+
+Support requests may be submitted through:
+
+Customer Portal.
+
+Mobile Application.
+
+Telephone Support.
+
+Email.
+
+Live Chat.
+
+Every support request receives a unique ticket number.
+
+Support tickets are categorized according to priority.
+
+Priority 1
+
+Critical service outage.
+
+Priority 2
+
+Major functionality unavailable.
+
+Priority 3
+
+Standard operational issue.
+
+Priority 4
+
+General inquiry.
+
+Customer identity must always be verified before account-specific
+information is disclosed.
+
+Support representatives may never request customer passwords.
+
+Sensitive information must not be transmitted through unsecured email.
+
+Escalation procedures exist for fraud investigations, payment disputes,
+security incidents and regulatory complaints.
+
+Customer satisfaction surveys are performed after ticket resolution.
+
+====================================================================
+30. FREQUENTLY ASKED QUESTIONS
+====================================================================
+
+Question:
+How long does customer verification normally require?
+
+Answer:
+Verification normally completes within forty-eight hours unless manual
+review is required.
+
+Question:
+How many failed login attempts lock an account?
+
+Answer:
+Five consecutive failed login attempts result in a thirty-minute
+account lock.
+
+Question:
+Can customers reuse previous passwords?
+
+Answer:
+No. The previous five passwords cannot be reused.
+
+Question:
+When is Multi-Factor Authentication required?
+
+Answer:
+MFA is mandatory for high-risk account activities including
+international transfers and security profile changes.
+
+Question:
+What is the maximum domestic transfer amount?
+
+Answer:
+The standard domestic transfer limit is USD 10,000 per transaction.
+
+Question:
+Are international transfers available for all customers?
+
+Answer:
+No. Additional verification and Enhanced Due Diligence may be required.
+
+Question:
+Can support staff access customer passwords?
+
+Answer:
+No. Passwords are securely hashed and cannot be viewed by employees.
+
+Question:
+How long are sessions valid?
+
+Answer:
+Sessions expire after fifteen minutes of inactivity and have a maximum
+lifetime of eight hours.
+
+====================================================================
+31. GLOSSARY
+====================================================================
+
+AML
+Anti-Money Laundering.
+
+API
+Application Programming Interface.
+
+Audit Trail
+A chronological record of system activity.
+
+Authentication
+Verification of user identity.
+
+Authorization
+Determination of user permissions.
+
+BCrypt
+A secure password hashing algorithm.
+
+CDD
+Customer Due Diligence.
+
+Correlation ID
+A unique identifier used to trace requests across multiple systems.
+
+EDD
+Enhanced Due Diligence.
+
+HTTP
+Hypertext Transfer Protocol.
+
+HTTPS
+Secure version of HTTP using TLS encryption.
+
+JWT
+JSON Web Token.
+
+KYC
+Know Your Customer.
+
+Least Privilege
+Granting only the minimum permissions necessary.
+
+MFA
+Multi-Factor Authentication.
+
+Observability
+The ability to understand system behaviour through logs, metrics and
+distributed traces.
+
+OTP
+One-Time Password.
+
+PII
+Personally Identifiable Information.
+
+RPO
+Recovery Point Objective.
+
+RTO
+Recovery Time Objective.
+
+Session
+A temporary authenticated interaction between a user and the system.
+
+TLS
+Transport Layer Security.
+
+Vector Database
+A database optimized for storing and searching vector embeddings.
+
+Embedding
+A numerical representation of text used for semantic similarity
+searches.
+
+Chunk
+A smaller section of a document generated during text splitting for
+embedding and retrieval.
+
+RAG
+Retrieval-Augmented Generation, a technique where an AI model retrieves
+relevant knowledge before generating an answer.
