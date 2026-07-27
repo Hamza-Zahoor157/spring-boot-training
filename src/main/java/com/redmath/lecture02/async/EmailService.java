@@ -16,8 +16,7 @@ public class EmailService {
 
     try {
       Thread.sleep(5000);
-    }
-    catch (InterruptedException e) {
+    } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     }
 

@@ -1,308 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>4.0.7</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
-  <groupId>com.redmath</groupId>
   <artifactId>Lecture02</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name/>
-  <description/>
-  <url/>
-  <licenses>
-    <license/>
-  </licenses>
-  <developers>
-    <developer/>
-  </developers>
-  <scm>
-    <connection/>
-    <developerConnection/>
-    <tag/>
-    <url/>
-  </scm>
-  <properties>
-    <java.version>25</java.version>
-    <sonar.projectKey>Lecture02</sonar.projectKey>
-    <sonar.projectName>Lecture02</sonar.projectName>
-    <sonar.host.url>http://localhost:9000</sonar.host.url>
-    <!--suppress UnresolvedMavenProperty -->
-    <sonar.token>${env.SONAR_TOKEN}</sonar.token>
-  </properties>
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-h2console</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-cache</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-liquibase</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-webmvc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-      <version>3.0.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-opentelemetry</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.micrometer</groupId>
-      <artifactId>micrometer-registry-prometheus</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-opentelemetry-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-liquibase-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-webmvc-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>net.ttddyy.observation</groupId>
-      <artifactId>datasource-micrometer-spring-boot</artifactId>
-      <version>2.2.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security-oauth2-resource-server</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security-oauth2-resource-server-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security-oauth2-client</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security-oauth2-client-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-      <dependency>
-	      <groupId>org.springframework.ai</groupId>
-	      <artifactId>spring-ai-starter-model-google-genai</artifactId>
-	    </dependency>
-
-  </dependencies>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.ai</groupId>
-        <artifactId>spring-ai-bom</artifactId>
-        <version>2.0.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <build>
     <plugins>
       <plugin>
-        <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <groupId>org.springframework.boot</groupId>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <executions>
           <execution>
-            <id>default-compile</id>
-            <phase>compile</phase>
+            <configuration>
+              <annotationProcessorPaths>
+                <path>
+                  <artifactId>lombok</artifactId>
+                  <groupId>org.projectlombok</groupId>
+                </path>
+              </annotationProcessorPaths>
+              <release>21</release>
+            </configuration>
             <goals>
               <goal>compile</goal>
             </goals>
-            <configuration>
-              <release>21</release>
-              <annotationProcessorPaths>
-                <path>
-                  <groupId>org.projectlombok</groupId>
-                  <artifactId>lombok</artifactId>
-                </path>
-              </annotationProcessorPaths>
-            </configuration>
+            <id>default-compile</id>
+            <phase>compile</phase>
           </execution>
           <execution>
-            <id>default-testCompile</id>
-            <phase>test-compile</phase>
+            <configuration>
+              <release>21</release>
+            </configuration>
             <goals>
               <goal>testCompile</goal>
             </goals>
-            <configuration>
-              <release>21</release>
-            </configuration>
+            <id>default-testCompile</id>
+            <phase>test-compile</phase>
           </execution>
         </executions>
+        <groupId>org.apache.maven.plugins</groupId>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>3.6.0</version>
-        <executions>
-          <execution>
-            <id>default-cli</id>
-            <phase>validate</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
         <configuration>
           <configLocation>google_checks.xml</configLocation>
         </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <id>default-cli</id>
+            <phase>validate</phase>
+          </execution>
+        </executions>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.6.0</version>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
         <executions>
           <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
             <id>default-cli</id>
             <phase>validate</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
           </execution>
         </executions>
+        <groupId>org.apache.maven.plugins</groupId>
       </plugin>
       <plugin>
-        <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>default-cli</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
         <configuration>
           <effort>Max</effort>
-          <threshold>Normal</threshold>
           <omitVisitors>FindReturnRef</omitVisitors>
           <plugins>
             <plugin>
-              <groupId>com.h3xstream.findsecbugs</groupId>
               <artifactId>findsecbugs-plugin</artifactId>
+              <groupId>com.h3xstream.findsecbugs</groupId>
               <version>LATEST</version>
             </plugin>
           </plugins>
+          <threshold>Normal</threshold>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.owasp</groupId>
-        <artifactId>dependency-check-maven</artifactId>
-        <version>12.2.2</version>
         <executions>
           <execution>
-            <id>default-cli</id>
-            <phase>verify</phase>
             <goals>
               <goal>check</goal>
             </goals>
+            <id>default-cli</id>
+            <phase>verify</phase>
           </execution>
         </executions>
-        <configuration>
-          <failBuildOnCVSS>10</failBuildOnCVSS>
-          <nvdApiKeyEnvironmentVariable>NVD_API_KEY</nvdApiKeyEnvironmentVariable>
-          <nvdApiDelay>6500</nvdApiDelay>
-          <nvdApiResultsPerPage>200</nvdApiResultsPerPage>
-        </configuration>
+        <groupId>com.github.spotbugs</groupId>
       </plugin>
       <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.15</version>
+        <artifactId>dependency-check-maven</artifactId>
+        <configuration>
+          <failBuildOnCVSS>10</failBuildOnCVSS>
+          <nvdApiDelay>6500</nvdApiDelay>
+          <nvdApiKeyEnvironmentVariable>NVD_API_KEY</nvdApiKeyEnvironmentVariable>
+          <nvdApiResultsPerPage>200</nvdApiResultsPerPage>
+        </configuration>
         <executions>
           <execution>
-            <id>prepare</id>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <id>default-cli</id>
+            <phase>verify</phase>
+          </execution>
+        </executions>
+        <groupId>org.owasp</groupId>
+        <version>12.2.2</version>
+      </plugin>
+      <plugin>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <executions>
+          <execution>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
+            <id>prepare</id>
           </execution>
           <execution>
-            <id>report</id>
-            <phase>prepare-package</phase>
             <goals>
               <goal>report</goal>
             </goals>
+            <id>report</id>
+            <phase>prepare-package</phase>
           </execution>
           <execution>
-            <id>check</id>
-            <goals>
-              <goal>check</goal>
-            </goals>
             <configuration>
               <rules>
                 <rule>
@@ -310,60 +140,230 @@
                   <limits>
                     <limit>
                       <counter>LINE</counter>
-                      <value>COVEREDRATIO</value>
                       <minimum>0.80</minimum>
+                      <value>COVEREDRATIO</value>
                     </limit>
                   </limits>
                 </rule>
               </rules>
             </configuration>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <id>check</id>
           </execution>
         </executions>
+        <groupId>org.jacoco</groupId>
+        <version>0.8.15</version>
       </plugin>
       <plugin>
-        <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
         <executions>
           <execution>
-            <id>default-cli</id>
-            <phase>verify</phase>
             <goals>
               <goal>sonar</goal>
             </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.pitest</groupId>
-        <artifactId>pitest-maven</artifactId>
-        <version>1.19.1</version>
-        <executions>
-          <execution>
             <id>default-cli</id>
             <phase>verify</phase>
-            <goals>
-              <goal>mutationCoverage</goal>
-            </goals>
           </execution>
         </executions>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+      </plugin>
+      <plugin>
+        <artifactId>pitest-maven</artifactId>
         <configuration>
+          <mutationThreshold>70</mutationThreshold>
           <outputFormats>
             <outputFormat>XML</outputFormat>
             <outputFormat>HTML</outputFormat>
           </outputFormats>
           <withHistory>true</withHistory>
-          <mutationThreshold>70</mutationThreshold>
         </configuration>
         <dependencies>
           <dependency>
-            <groupId>org.pitest</groupId>
             <artifactId>pitest-junit5-plugin</artifactId>
+            <groupId>org.pitest</groupId>
             <version>LATEST</version>
           </dependency>
         </dependencies>
+        <executions>
+          <execution>
+            <goals>
+              <goal>mutationCoverage</goal>
+            </goals>
+            <id>default-cli</id>
+            <phase>verify</phase>
+          </execution>
+        </executions>
+        <groupId>org.pitest</groupId>
+        <version>1.19.1</version>
       </plugin>
 
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <artifactId>spring-boot-h2console</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-cache</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-liquibase</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-webmvc</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <groupId>org.springdoc</groupId>
+      <version>3.0.2</version>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-opentelemetry</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>micrometer-registry-prometheus</artifactId>
+      <groupId>io.micrometer</groupId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-opentelemetry-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>h2</artifactId>
+      <groupId>com.h2database</groupId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-actuator-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-data-jpa-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-liquibase-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-webmvc-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-security</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>spring-boot-starter-security-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>datasource-micrometer-spring-boot</artifactId>
+      <groupId>net.ttddyy.observation</groupId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-security-oauth2-resource-server</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>spring-boot-starter-security-oauth2-resource-server-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-security-oauth2-client</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-security-oauth2-client-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spring-ai-starter-model-google-genai</artifactId>
+      <groupId>org.springframework.ai</groupId>
+    </dependency>
+
+  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <artifactId>spring-ai-bom</artifactId>
+        <groupId>org.springframework.ai</groupId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version>2.0.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <description/>
+  <developers>
+    <developer/>
+  </developers>
+  <groupId>com.redmath</groupId>
+  <licenses>
+    <license/>
+  </licenses>
+  <modelVersion>4.0.0</modelVersion>
+  <name/>
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <relativePath/>
+    <version>4.0.7</version> <!-- lookup parent from repository -->
+  </parent>
+  <properties>
+    <java.version>25</java.version>
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
+    <sonar.projectKey>Lecture02</sonar.projectKey>
+    <sonar.projectName>Lecture02</sonar.projectName>
+    <!--suppress UnresolvedMavenProperty -->
+    <sonar.token>${env.SONAR_TOKEN}</sonar.token>
+  </properties>
+  <scm>
+    <connection/>
+    <developerConnection/>
+    <tag/>
+    <url/>
+  </scm>
+
+  <url/>
+
+  <version>0.0.1-SNAPSHOT</version>
 
 </project>

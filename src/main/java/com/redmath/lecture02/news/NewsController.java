@@ -85,7 +85,7 @@ public class NewsController {
 
     String username = authentication.getName();
     boolean isEditor = authentication.getAuthorities().stream()
-        .anyMatch(authority -> "SCOPE_EDITOR".equals( authority.getAuthority()));
+        .anyMatch(authority -> "SCOPE_EDITOR".equals(authority.getAuthority()));
 
     NewsResponse updatedNews = service.updateNews(newsId, request, username, isEditor);
 

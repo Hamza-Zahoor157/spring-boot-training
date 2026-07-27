@@ -1,5 +1,10 @@
 package com.redmath.lecture02.security;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import com.redmath.lecture02.user.ApiUser;
 import com.redmath.lecture02.user.ApiUserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,9 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.core.Authentication;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class FormLoginSuccessHandlerTest {

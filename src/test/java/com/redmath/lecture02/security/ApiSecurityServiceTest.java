@@ -1,9 +1,10 @@
 package com.redmath.lecture02.security;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import com.redmath.lecture02.user.ApiUser;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ApiSecurityServiceTest {
 

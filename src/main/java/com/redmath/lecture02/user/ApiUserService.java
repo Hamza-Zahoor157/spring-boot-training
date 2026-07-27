@@ -24,6 +24,7 @@ public class ApiUserService implements UserDetailsService {
     this.repository = repository;
     this.passwordEncoder = passwordEncoder;
   }
+
   @Cacheable(value = "users", key = "#username")
   public ApiUser getByUsername(String username) {
 

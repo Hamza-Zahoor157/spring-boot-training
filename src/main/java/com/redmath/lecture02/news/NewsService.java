@@ -45,7 +45,8 @@ public class NewsService {
   }
 
   @Transactional
-  public NewsResponse updateNews(Long newsId, NewsRequest request, String username, boolean isEditor) {
+  public NewsResponse updateNews(Long newsId, NewsRequest request, String username,
+      boolean isEditor) {
 
     validateNewsId(newsId);
 

@@ -1,7 +1,6 @@
 package com.redmath.lecture02.security;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -25,10 +24,12 @@ class OauthAuthenticationSuccessHandlerTest {
 
     OAuth2AuthenticationToken authentication = mock(OAuth2AuthenticationToken.class);
     when(authentication.getName()).thenReturn("hamza");
-    org.springframework.security.oauth2.core.user.OAuth2User principal = mock(org.springframework.security.oauth2.core.user.OAuth2User.class);
+    org.springframework.security.oauth2.core.user.OAuth2User principal = mock(
+        org.springframework.security.oauth2.core.user.OAuth2User.class);
     when(authentication.getPrincipal()).thenReturn(principal);
     when(authentication.getAuthorizedClientRegistrationId()).thenReturn("google");
-    when(resolver.resolve(authentication)).thenReturn(new OauthUser("google", "hamza@example.com", "hamza@example.com", "Hamza"));
+    when(resolver.resolve(authentication)).thenReturn(
+        new OauthUser("google", "hamza@example.com", "hamza@example.com", "Hamza"));
 
     ApiUser apiUser = new ApiUser();
     apiUser.setUserName("hamza");

@@ -21,11 +21,9 @@ public final class ApiSecurityService implements InitializingBean {
   private NimbusJwtEncoder jwtEncoder;
   private NimbusJwtDecoder jwtDecoder;
 
-  public ApiSecurityService() {
-  }
 
   @Override
-  public void afterPropertiesSet(){
+  public void afterPropertiesSet() {
     try {
       KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
       keyPairGenerator.initialize(2048);
