@@ -323,10 +323,6 @@
       <artifactId>spring-ai-starter-model-google-genai-embedding</artifactId>
     </dependency>
     <dependency>
-	      <groupId>org.springframework.ai</groupId>
-	      <artifactId>spring-ai-vector-store</artifactId>
-	    </dependency>
-    <dependency>
       <groupId>org.springframework.ai</groupId>
       <artifactId>spring-ai-vector-store</artifactId>
     </dependency>
@@ -334,6 +330,15 @@
       <groupId>org.springframework.ai</groupId>
       <artifactId>spring-ai-vector-store-advisor</artifactId>
       <version>2.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.ai</groupId>
+      <artifactId>spring-ai-starter-vector-store-pgvector</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
     </dependency>
 
   </dependencies>

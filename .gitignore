@@ -3,7 +3,7 @@ target/
 build/
 out/
 *.class
-
+run.sh
 # Maven Wrapper binary (the scripts and properties file stay tracked)
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -21,6 +21,7 @@ src/main/resources/application-local.yml
 *.p12
 *.pfx
 secrets/
+source-env.sh
 
 ### STS ###
 .apt_generated

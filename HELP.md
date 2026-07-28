@@ -1,5 +1,67 @@
 # Getting Started
 
+## OAuth2 Setup (Google & GitHub Login)
+
+The application supports OAuth2 login with Google and GitHub. If you see
+`Error 401: invalid_client` / `The OAuth client was not found` when clicking
+"Sign in with Google", it means the OAuth credentials are not configured.
+
+### 1. Create OAuth Credentials
+
+**Google:**
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a project or select an existing one
+3. Navigate to **APIs & Services → Credentials**
+4. Click **Create Credentials → OAuth client ID**
+5. Application type: **Web application**
+6. Add authorized redirect URI: `http://localhost:8080/login/oauth2/code/google`
+7. Copy the **Client ID** and **Client Secret**
+
+**GitHub:**
+1. Go to [GitHub Developer Settings](https://github.com/settings/developers)
+2. Click **New OAuth App**
+3. Homepage URL: `http://localhost:8080`
+4. Authorization callback URL: `http://localhost:8080/login/oauth2/code/github`
+5. Copy the **Client ID** and **Client Secret**
+
+### 2. Configure Environment Variables
+
+Copy `.env.example` to `.env` and fill in your credentials:
+
+```bash
+cp .env.example .env
+# Edit .env with your real credentials
+```
+
+The `.env` file is gitignored and should never be committed.
+
+### 3. Run the Application
+
+**Option A - Using the run script (recommended):**
+```bash
+./run.sh
+```
+
+**Option B - Manually set env vars and run:**
+```bash
+export GOOGLE_CLIENT_ID=your-client-id
+export GOOGLE_CLIENT_SECRET=your-client-secret
+export GITHUB_CLIENT_ID=your-client-id
+export GITHUB_CLIENT_SECRET=your-client-secret
+./mvnw spring-boot:run
+```
+
+**Option C - From IntelliJ IDEA:**
+The run configuration in `.idea/workspace.xml` already has the env vars set.
+Just run the `Lecture02Application` configuration.
+
+### 4. Verify OAuth Redirect URI
+
+Make sure the redirect URI in `application.yaml` matches the one registered
+in Google/GitHub:
+- Google: `http://localhost:8080/login/oauth2/code/google`
+- GitHub: `http://localhost:8080/login/oauth2/code/github`
+
 ### Reference Documentation
 
 For further reference, please consider the following sections:
