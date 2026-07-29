@@ -9,4 +9,5 @@ public record ChunkResult(
     Map<String, Object> metadata
 
 ) {
+
 }

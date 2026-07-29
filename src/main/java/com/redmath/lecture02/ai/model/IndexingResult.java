@@ -6,4 +6,5 @@ public record IndexingResult(
     int chunksCreated,
     long durationInMillis
 ) {
+
 }

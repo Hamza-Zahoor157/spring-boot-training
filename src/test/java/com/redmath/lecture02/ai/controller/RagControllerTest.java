@@ -1,4 +1,4 @@
-package com.redmath.lecture02.chat;
+package com.redmath.lecture02.ai.controller;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -14,23 +14,24 @@ import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 @SpringBootTest
 @AutoConfigureMockMvc
 @EnabledIfEnvironmentVariable(named = "GEMINI_API_KEY", matches = ".+")
-class SimpleChatControllerTest {
+class RagControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
 
   @Test
-  void shouldReturnChatResponse() throws Exception {
-    mockMvc.perform(get("/api/v1/chat-model")
+  void ask_withQuestion_returnsOk() throws Exception {
+    mockMvc.perform(get("/api/v1/ai/rag")
             .with(jwt().jwt(jwt -> jwt.subject("Hamza")))
-            .param("message", "Hello"))
+            .param("question", "What is the company policy?"))
         .andExpect(status().isOk());
   }
 
   @Test
-  void shouldReturnChatResponseWithDefaultMessage() throws Exception {
-    mockMvc.perform(get("/api/v1/chat-model")
-            .with(jwt().jwt(jwt -> jwt.subject("Hamza"))))
+  void ask_withDefaultQuestion_returnsOk() throws Exception {
+    mockMvc.perform(get("/api/v1/ai/rag")
+            .with(jwt().jwt(jwt -> jwt.subject("Hamza")))
+            .param("question", "default"))
         .andExpect(status().isOk());
   }
 }

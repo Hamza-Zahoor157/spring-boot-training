@@ -24,6 +24,7 @@ public class RagController {
     this.chatModel = chatModel;
     this.vectorStore = vectorStore;
   }
+
   @GetMapping("/rag")
   public String ask(
 

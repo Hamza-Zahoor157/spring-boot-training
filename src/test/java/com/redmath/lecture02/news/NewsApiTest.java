@@ -1,5 +1,6 @@
 package com.redmath.lecture02.news;
 
+import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -33,7 +34,8 @@ class NewsApiTest {
     mockMvc.perform(get("/api/v1/news"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.content").isArray())
-        .andExpect(jsonPath("$.content", hasSize(2)));
+        .andExpect(jsonPath("$.content[*].title", hasItem("Spring Boot 4 Released")))
+        .andExpect(jsonPath("$.content[*].title", hasItem("Java 25 LTS")));
   }
 
   @Test

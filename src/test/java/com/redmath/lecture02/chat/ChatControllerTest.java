@@ -14,23 +14,32 @@ import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 @SpringBootTest
 @AutoConfigureMockMvc
 @EnabledIfEnvironmentVariable(named = "GEMINI_API_KEY", matches = ".+")
-class SimpleChatControllerTest {
+class ChatControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
 
   @Test
-  void shouldReturnChatResponse() throws Exception {
-    mockMvc.perform(get("/api/v1/chat-model")
+  void chat_withMessage_returnsOk() throws Exception {
+    mockMvc.perform(get("/api/v1/chat")
             .with(jwt().jwt(jwt -> jwt.subject("Hamza")))
             .param("message", "Hello"))
         .andExpect(status().isOk());
   }
 
   @Test
-  void shouldReturnChatResponseWithDefaultMessage() throws Exception {
-    mockMvc.perform(get("/api/v1/chat-model")
+  void chat_withDefaultValues_returnsOk() throws Exception {
+    mockMvc.perform(get("/api/v1/chat")
             .with(jwt().jwt(jwt -> jwt.subject("Hamza"))))
+        .andExpect(status().isOk());
+  }
+
+  @Test
+  void chat_withCustomConversationId_returnsOk() throws Exception {
+    mockMvc.perform(get("/api/v1/chat")
+            .with(jwt().jwt(jwt -> jwt.subject("Hamza")))
+            .param("conversationId", "test-conv")
+            .param("message", "Hi"))
         .andExpect(status().isOk());
   }
 }

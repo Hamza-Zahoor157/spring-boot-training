@@ -9,6 +9,7 @@ The application supports OAuth2 login with Google and GitHub. If you see
 ### 1. Create OAuth Credentials
 
 **Google:**
+
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a project or select an existing one
 3. Navigate to **APIs & Services → Credentials**
@@ -18,6 +19,7 @@ The application supports OAuth2 login with Google and GitHub. If you see
 7. Copy the **Client ID** and **Client Secret**
 
 **GitHub:**
+
 1. Go to [GitHub Developer Settings](https://github.com/settings/developers)
 2. Click **New OAuth App**
 3. Homepage URL: `http://localhost:8080`
@@ -38,11 +40,13 @@ The `.env` file is gitignored and should never be committed.
 ### 3. Run the Application
 
 **Option A - Using the run script (recommended):**
+
 ```bash
 ./run.sh
 ```
 
 **Option B - Manually set env vars and run:**
+
 ```bash
 export GOOGLE_CLIENT_ID=your-client-id
 export GOOGLE_CLIENT_SECRET=your-client-secret
@@ -52,13 +56,13 @@ export GITHUB_CLIENT_SECRET=your-client-secret
 ```
 
 **Option C - From IntelliJ IDEA:**
-The run configuration in `.idea/workspace.xml` already has the env vars set.
-Just run the `Lecture02Application` configuration.
+The run configuration in `.idea/workspace.xml` already has the env vars set. Just run the
+`Lecture02Application` configuration.
 
 ### 4. Verify OAuth Redirect URI
 
-Make sure the redirect URI in `application.yaml` matches the one registered
-in Google/GitHub:
+Make sure the redirect URI in `application.yaml` matches the one registered in Google/GitHub:
+
 - Google: `http://localhost:8080/login/oauth2/code/google`
 - GitHub: `http://localhost:8080/login/oauth2/code/github`
 

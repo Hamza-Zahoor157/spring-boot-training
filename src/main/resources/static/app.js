@@ -120,7 +120,7 @@ async function login() {
   }
 
   const payload = await response.json();
-  setAccessToken(payload.access_token);
+  setAccessToken(payload.token);
   updateAuthStatus();
   await loadNews();
 }

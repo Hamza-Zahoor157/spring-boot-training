@@ -1,11 +1,13 @@
 package com.redmath.lecture02.security;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.redmath.lecture02.user.ApiUser;
 import com.redmath.lecture02.user.ApiUserService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
@@ -15,7 +17,7 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 class OauthAuthenticationSuccessHandlerTest {
 
   @Test
-  void onAuthenticationSuccess_writesHtmlWithToken() throws Exception {
+  void onAuthenticationSuccess_setsTokenCookieAndRedirectsToRoot() throws Exception {
     ApiSecurityService jwtService = mock(ApiSecurityService.class);
     ApiUserService userService = mock(ApiUserService.class);
     OauthUserResolver resolver = mock(OauthUserResolver.class);
@@ -43,5 +45,12 @@ class OauthAuthenticationSuccessHandlerTest {
 
     assertEquals(HttpStatus.FOUND.value(), response.getStatus());
     assertEquals("/?token=test-jwt-token", response.getHeader("Location"));
+
+    Cookie tokenCookie = response.getCookie("token");
+    assertNotNull(tokenCookie);
+    assertEquals("test-jwt-token", tokenCookie.getValue());
+    assertEquals("/", tokenCookie.getPath());
+    assertEquals(true, tokenCookie.isHttpOnly());
+    assertEquals(true, tokenCookie.getSecure());
   }
 }

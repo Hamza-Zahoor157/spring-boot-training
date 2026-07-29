@@ -16,6 +16,7 @@ public class RetrievalService {
   public RetrievalService(VectorStore vectorStore) {
     this.vectorStore = vectorStore;
   }
+
   public RetrievalResult search(String question) {
     SearchRequest request =
         SearchRequest.builder()

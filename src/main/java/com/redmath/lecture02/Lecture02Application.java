@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 @ConfigurationPropertiesScan
 public class Lecture02Application {
 
-  public static void init(){
+  public static void init() {
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     Locale.setDefault(Locale.US);
   }

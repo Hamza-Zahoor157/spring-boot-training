@@ -1,22 +1,20 @@
 package com.redmath.lecture02.ai.indexing;
 
+import com.redmath.lecture02.ai.indexing.loader.ResourceDocumentLoader;
 import com.redmath.lecture02.ai.model.IndexingResult;
 import java.util.List;
-
 import org.springframework.ai.document.Document;
 import org.springframework.ai.transformer.splitter.TextSplitter;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 
-import com.redmath.lecture02.ai.indexing.loader.ResourceDocumentLoader;
-
 @Service
 public class KnowledgeBaseIndexer {
 
+  public static final String DOCUMENT_ID = "policy-manual";
   private final ResourceDocumentLoader documentLoader;
   private final TextSplitter textSplitter;
   private final VectorStore vectorStore;
-  public static final String DOCUMENT_ID = "policy-manual";
 
 
   public KnowledgeBaseIndexer(ResourceDocumentLoader documentLoader,

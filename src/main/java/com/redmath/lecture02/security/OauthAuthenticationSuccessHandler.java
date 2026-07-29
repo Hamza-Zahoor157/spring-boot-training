@@ -3,6 +3,7 @@ package com.redmath.lecture02.security;
 import com.redmath.lecture02.user.ApiUser;
 import com.redmath.lecture02.user.ApiUserService;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -52,11 +53,16 @@ public class OauthAuthenticationSuccessHandler
     String jwt =
         jwtService.generateToken(apiUser);
 
-    String redirectUrl = "/?token=" +
-        URLEncoder.encode(
-            jwt,
-            StandardCharsets.UTF_8);
+    // Secure httpOnly cookie prevents XSS-based token theft.
+    // The token is also passed via a safe, relative redirect URL
+    // so the frontend can capture it into localStorage for Bearer auth.
+    Cookie tokenCookie = new Cookie("token", jwt);
+    tokenCookie.setHttpOnly(true);
+    tokenCookie.setSecure(true);
+    tokenCookie.setPath("/");
+    response.addCookie(tokenCookie);
 
-    response.sendRedirect(redirectUrl);
+    String encodedToken = URLEncoder.encode(jwt, StandardCharsets.UTF_8);
+    response.sendRedirect("/?token=" + encodedToken);
   }
 }
