@@ -1,4 +1,4 @@
-package com.redmath.lecture02.chat;
+package com.redmath.lecture02.ai.controller;
 
 import java.util.Objects;
 import org.springframework.ai.chat.model.ChatModel;

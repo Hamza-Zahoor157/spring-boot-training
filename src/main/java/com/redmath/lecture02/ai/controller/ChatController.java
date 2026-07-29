@@ -1,4 +1,4 @@
-package com.redmath.lecture02.chat;
+package com.redmath.lecture02.ai.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
@@ -15,11 +15,10 @@ public class ChatController {
     this.chatClient = chatClient;
   }
 
-  @GetMapping("/api/v1/chat")
+  @GetMapping("/api/v1/ai/chat")
   public String chat(
       @RequestParam(defaultValue = "default") String conversationId,
       @RequestParam(defaultValue = "Hello") String message) {
-
     return chatClient
         .prompt(message)
         .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, conversationId))

@@ -5,11 +5,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.test.web.servlet.MockMvc;
-import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -21,17 +21,17 @@ class RagControllerTest {
 
   @Test
   void ask_withQuestion_returnsOk() throws Exception {
-    mockMvc.perform(get("/api/v1/ai/rag")
+    mockMvc.perform(get("/api/v1/ai/chat")
             .with(jwt().jwt(jwt -> jwt.subject("Hamza")))
-            .param("question", "What is the company policy?"))
+            .param("message", "What is the company policy?"))
         .andExpect(status().isOk());
   }
 
   @Test
   void ask_withDefaultQuestion_returnsOk() throws Exception {
-    mockMvc.perform(get("/api/v1/ai/rag")
+    mockMvc.perform(get("/api/v1/ai/chat")
             .with(jwt().jwt(jwt -> jwt.subject("Hamza")))
-            .param("question", "default"))
+            .param("message", "default"))
         .andExpect(status().isOk());
   }
 }

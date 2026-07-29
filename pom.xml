@@ -139,8 +139,8 @@
                   <element>BUNDLE</element>
                   <limits>
                     <limit>
-                    <counter>LINE</counter>
-                    <minimum>0.70</minimum>
+                      <counter>LINE</counter>
+                      <minimum>0.70</minimum>
                       <value>COVEREDRATIO</value>
                     </limit>
                   </limits>
@@ -341,10 +341,10 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-docker-compose</artifactId>
-      <scope>runtime</scope>
+      <groupId>org.springframework.boot</groupId>
       <optional>true</optional>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
   <dependencyManagement>
