@@ -19,6 +19,7 @@ public class ChatController {
   public String chat(
       @RequestParam(defaultValue = "default") String conversationId,
       @RequestParam(defaultValue = "Hello") String message) {
+
     return chatClient
         .prompt(message)
         .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, conversationId))

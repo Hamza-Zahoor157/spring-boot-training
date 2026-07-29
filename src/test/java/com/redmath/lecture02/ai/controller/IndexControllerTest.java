@@ -20,8 +20,8 @@ class IndexControllerTest {
   private MockMvc mockMvc;
 
   @Test
-  void indexKnowledgeBase_returnsOk() throws Exception {
-    mockMvc.perform(post("/api/v1/ai/index")
+  void indexPhoneDetails_returnsOk() throws Exception {
+    mockMvc.perform(post("/api/v1/ai/index-phones")
             .with(jwt().jwt(jwt -> jwt.subject("Hamza"))))
         .andExpect(status().isOk());
   }

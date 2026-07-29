@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class IndexingService {
 
-  private final KnowledgeBaseIndexer knowledgeBaseIndexer;
+  private final PhoneDetailsIndexer phoneDetailsIndexer;
 
-  public IndexingService(KnowledgeBaseIndexer knowledgeBaseIndexer) {
-    this.knowledgeBaseIndexer = knowledgeBaseIndexer;
+  public IndexingService(PhoneDetailsIndexer phoneDetailsIndexer) {
+    this.phoneDetailsIndexer = phoneDetailsIndexer;
   }
 
-  public IndexingResult rebuildKnowledgeBase() {
-    return knowledgeBaseIndexer.index();
+  public IndexingResult indexPhoneDetails() {
+    return phoneDetailsIndexer.index();
   }
 }

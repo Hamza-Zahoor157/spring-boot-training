@@ -20,15 +20,15 @@ class RagControllerTest {
   private MockMvc mockMvc;
 
   @Test
-  void ask_withQuestion_returnsOk() throws Exception {
+  void chat_withQuestion_returnsOk() throws Exception {
     mockMvc.perform(get("/api/v1/ai/chat")
             .with(jwt().jwt(jwt -> jwt.subject("Hamza")))
-            .param("message", "What is the company policy?"))
+            .param("message", "What is the battery life of Samsung Galaxy?"))
         .andExpect(status().isOk());
   }
 
   @Test
-  void ask_withDefaultQuestion_returnsOk() throws Exception {
+  void chat_withDefaultQuestion_returnsOk() throws Exception {
     mockMvc.perform(get("/api/v1/ai/chat")
             .with(jwt().jwt(jwt -> jwt.subject("Hamza")))
             .param("message", "default"))
